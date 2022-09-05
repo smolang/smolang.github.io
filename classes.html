@@ -1,0 +1,175 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Classes &#8212; SMOL  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Semantic Access" href="semantic-access.html" />
+    <link rel="prev" title="Statements" href="statements.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  <div class="document">
+    
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">SMOL</a></h1>
+
+
+
+<p class="blurb">Semantic Micro Object Language</p>
+
+
+
+
+<p>
+<iframe src="https://ghbtns.com/github-btn.html?user=smolang&repo=SemanticObjects&type=watch&count=true&size=large&v=2"
+  allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
+</p>
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Classes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#class-declarations">Class Declarations</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="statements.html" title="previous chapter">Statements</a></li>
+      <li>Next: <a href="semantic-access.html" title="next chapter">Semantic Access</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="classes">
+<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this headline">¶</a></h1>
+<p>All code to be executed in SMOL, with the exception of the main block, is
+contained in classes.  Classes define fields and methods.  Classes are
+instantiated in objects via the <code class="docutils literal notranslate"><span class="pre">new</span></code> expression, all objects of a class
+share the same methods and fields.  Each object’s fields hold different state
+that can change over time.</p>
+<section id="class-declarations">
+<span id="class-declaration-ref"></span><h2>Class Declarations<a class="headerlink" href="#class-declarations" title="Permalink to this headline">¶</a></h2>
+<p>A class can have generic type parameters, field declarations, methods and a modelling bridge.
+Additionally a class may be abstract and contain abstract methods. An abstract class may containt non-abstract methods.</p>
+<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ClassDeclaration <span class="o">::=</span> &#39;abstract&#39;?
+                     &#39;class&#39; Identifier ( &#39;<span class="p">&lt;</span><span class="nc">&#39; Identifier (&#39;,&#39; Identifier)* &#39;</span><span class="p">&gt;</span>&#39;)?
+                     (&#39;extends&#39; Type )?
+                     &#39;(&#39; (FieldDeclaration (&#39;,&#39; FieldDeclaration)* )? &#39;)&#39;
+                     ModelsDeclaration?
+                     MethodDefinition*
+                     &#39;end&#39;
+</pre></div>
+</div>
+<p>A field is declared using a type and a name.
+The <code class="docutils literal notranslate"><span class="pre">hidden</span></code> modifier disables semantic lifting for this field.
+The <code class="docutils literal notranslate"><span class="pre">domain</span></code> modifier moves the generated triples to the modelled node.
+A field cannot be <code class="docutils literal notranslate"><span class="pre">domain</span></code> and <code class="docutils literal notranslate"><span class="pre">hidden</span></code>.</p>
+<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>FieldDeclaration <span class="o">::=</span> &#39;hidden&#39;? &#39;domain&#39;?
+                      Type Identifier
+</pre></div>
+</div>
+<p><em>models</em></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">models</span></code> declarations are used to connect object structure to semantic
+reflection; see Section <a class="reference internal" href="semantic-access.html#modeling-bridge"><span class="std std-ref">Modeling Bridge</span></a>.</p>
+<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ModelsDeclaration <span class="o">::=</span> (&#39;models&#39; &#39;(&#39; Expression &#39;)&#39; StringLiteral &#39;;&#39;)*
+                      &#39;models&#39; StringLiteral &#39;;&#39;
+</pre></div>
+</div>
+<p><em>methods</em></p>
+<p>A <code class="docutils literal notranslate"><span class="pre">rule</span></code> method cannot have side-effects (no object creation, no writing field access), no parameters and can only call other <code class="docutils literal notranslate"><span class="pre">rule</span></code> methods.</p>
+<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>MethodDefinition <span class="o">::=</span> ConcreteMethod | AbstractMethod
+
+ConcreteMethod <span class="o">::=</span> &#39;rule&#39;? &#39;domain&#39;? &#39;override&#39;?
+                     Type Identifier &#39;(&#39; (Type Identifier (&#39;,&#39; Type Identifier)* )? &#39;)&#39;
+                     Statement*
+                     &#39;end&#39;
+
+AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#39;domain&#39;? &#39;override&#39;?
+                     Type Identifier &#39;(&#39; (Type Identifier (&#39;,&#39; Type Identifier)* )? &#39;)&#39;
+</pre></div>
+</div>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+    <div class="clearer"></div>
+  </div>
+    <div class="footer">
+      &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/classes.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
