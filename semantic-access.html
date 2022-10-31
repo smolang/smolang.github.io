@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Semantic Access &#8212; SMOL  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Functional Mock-Up Objects" href="fmos.html" />
@@ -51,27 +53,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Semantic Access</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#semantic-lifting">Semantic Lifting</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#semantic-reflection">Semantic Reflection</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#time-series-access">Time Series Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-semantic-access">Advanced Semantic Access</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="language.html">Language Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statements.html">Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Semantic Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="language.html">The SMOL Language Manual</a><ul>
       <li>Previous: <a href="classes.html" title="previous chapter">Classes</a></li>
       <li>Next: <a href="fmos.html" title="next chapter">Functional Mock-Up Objects</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -84,7 +88,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -102,7 +106,7 @@
           <div class="body" role="main">
             
   <section id="semantic-access">
-<span id="id1"></span><h1>Semantic Access<a class="headerlink" href="#semantic-access" title="Permalink to this headline">¶</a></h1>
+<span id="id1"></span><h1>Semantic Access<a class="headerlink" href="#semantic-access" title="Permalink to this heading">¶</a></h1>
 <p>The SMOL interpreter implements <em>semantic lifting</em>, the process of generating
 a knowledge graph from the current program state.  The generated knowledge
 graph can be investigated by external tools after creating a <code class="docutils literal notranslate"><span class="pre">.ttl</span></code> file via
@@ -111,9 +115,9 @@ listed in <a class="reference internal" href="getting-started.html#querying-smol
 via special statements for <em>semantic reflection</em> through OWL concepts, SHACL
 shapes or SPARQL queries.</p>
 <section id="semantic-lifting">
-<h2>Semantic Lifting<a class="headerlink" href="#semantic-lifting" title="Permalink to this headline">¶</a></h2>
+<h2>Semantic Lifting<a class="headerlink" href="#semantic-lifting" title="Permalink to this heading">¶</a></h2>
 <section id="ontology-and-virtualization">
-<h3>Ontology and Virtualization<a class="headerlink" href="#ontology-and-virtualization" title="Permalink to this headline">¶</a></h3>
+<h3>Ontology and Virtualization<a class="headerlink" href="#ontology-and-virtualization" title="Permalink to this heading">¶</a></h3>
 <p>The generated knowledge graph is generated from the following sources:</p>
 <ul class="simple">
 <li><p>The <em>SMOL ontology</em> defining the general vocabulary and basic axioms for states.</p></li>
@@ -137,10 +141,10 @@ below:</p>
 </section>
 </section>
 <section id="semantic-reflection">
-<h2>Semantic Reflection<a class="headerlink" href="#semantic-reflection" title="Permalink to this headline">¶</a></h2>
+<h2>Semantic Reflection<a class="headerlink" href="#semantic-reflection" title="Permalink to this heading">¶</a></h2>
 <p><em>general introduction</em></p>
 <section id="modeling-bridge">
-<span id="id2"></span><h3>Modeling Bridge<a class="headerlink" href="#modeling-bridge" title="Permalink to this headline">¶</a></h3>
+<span id="id2"></span><h3>Modeling Bridge<a class="headerlink" href="#modeling-bridge" title="Permalink to this heading">¶</a></h3>
 <p>To connect with the domain model, SMOL implements the modeling bridge, a mechanism to manually add axioms over the lifted SMOL objects.
 A simple modeling bridge takes as a parameter a string containing a <a class="reference external" href="https://www.w3.org/TR/turtle/#grammar-production-predicateObjectList">predicate object list</a> in turtle syntax.
 The IRI of the lifted objects will be attached as the subject for the predicate object list.</p>
@@ -156,16 +160,16 @@ COMPLEX_MODELS ::= `models` `(` Expression `)` STRING `;` MODELS;
 </pre></div>
 </div>
 <p>Example</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span> <span class="p">(</span><span class="n">Int</span> <span class="n">i</span><span class="p">)</span>
-  <span class="n">models</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">i</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="s">&quot;a :containsPositive&quot;</span><span class="p">;</span>
-  <span class="n">models</span> <span class="s">&quot;a :containsNonPositive&quot;</span><span class="p">;</span>
-<span class="n">end</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;a :containsPositive&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :containsNonPositive&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 
-<span class="n">main</span>
-  <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-  <span class="n">C</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
-  <span class="n">C</span> <span class="n">e</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span> <span class="n">models</span> <span class="s">&quot;a :special&quot;</span><span class="p">;</span>
-<span class="n">end</span>
+<span class="n">main</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :special&quot;</span><span class="p">;</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The lifting will contain the following axioms:</p>
@@ -181,17 +185,17 @@ run:obj3 a :special.
 </pre></div>
 </div>
 <section id="crossing-the-modeling-bridge">
-<h4>Crossing the Modeling Bridge<a class="headerlink" href="#crossing-the-modeling-bridge" title="Permalink to this headline">¶</a></h4>
+<h4>Crossing the Modeling Bridge<a class="headerlink" href="#crossing-the-modeling-bridge" title="Permalink to this heading">¶</a></h4>
 <p>Additionally to adding axioms, the <code class="docutils literal notranslate"><span class="pre">domain</span></code> modifier can be used to create a <em>modelled</em> object.
 If a class contains a field or method modified by <code class="docutils literal notranslate"><span class="pre">domain</span></code>, then each SMOL object is lifted to <em>two</em> objects in the knowledge graph,
 the standard one using the <code class="docutils literal notranslate"><span class="pre">run:</span></code> prefix (the modelling object), and a second one using the <code class="docutils literal notranslate"><span class="pre">domain:</span></code> prefix (the modelled object). The second object is envisaged to be the corresponding
 object in the domain, modelled by the created object. The two objects are connected using the <code class="docutils literal notranslate"><span class="pre">smol:models</span></code> property.</p>
 <p>If a field is annotated with <code class="docutils literal notranslate"><span class="pre">domain</span></code>, then it is lifted for the modelled object. Its prefix is also changed to <code class="docutils literal notranslate"><span class="pre">domain</span></code>.
 The same holds for methods (see CSSA.). The modelled object is only created during lifting if at least one field or method is annotated with <code class="docutils literal notranslate"><span class="pre">domain</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span> <span class="n">i</span><span class="p">,</span> <span class="n">domain</span> <span class="n">Int</span> <span class="n">j</span><span class="p">)</span> <span class="n">end</span>
-<span class="n">main</span>
-  <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">);</span>
-<span class="n">end</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"></span>
+<span class="n">main</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The lifting of the created object is as follows.</p>
@@ -203,16 +207,16 @@ domain:obj1 domain:C_i 4.
 </div>
 </section>
 <section id="ignoring-fields">
-<h4>Ignoring Fields<a class="headerlink" href="#ignoring-fields" title="Permalink to this headline">¶</a></h4>
+<h4>Ignoring Fields<a class="headerlink" href="#ignoring-fields" title="Permalink to this heading">¶</a></h4>
 <p>To exclude certain fields in a class from being lifted, they can be annotated with the <code class="docutils literal notranslate"><span class="pre">hidden</span></code> modifier.
 The field will be completely ignored during lifting: neither general axioms nor instances are generated.
 The <code class="docutils literal notranslate"><span class="pre">hidden</span></code> modifier does not interact with the visibility modifiers
 If the field is of object-type, the object it points to will still be lifted.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span> <span class="p">(</span><span class="n">Int</span> <span class="n">i</span><span class="p">,</span> <span class="n">hidden</span> <span class="n">C</span> <span class="n">j</span><span class="p">)</span> <span class="n">end</span>
-<span class="n">main</span>
-  <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span>
-  <span class="n">C</span> <span class="n">d</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
-<span class="n">end</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"></span>
+<span class="n">main</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The lifting will contain the following axioms. Note that <code class="docutils literal notranslate"><span class="pre">prog:C_j</span></code> is not mentioned.</p>
@@ -228,16 +232,16 @@ run:obj2 a prog:C;
 </div>
 </section>
 <section id="computational-semantic-state-access">
-<h4>Computational Semantic State Access<a class="headerlink" href="#computational-semantic-state-access" title="Permalink to this headline">¶</a></h4>
+<h4>Computational Semantic State Access<a class="headerlink" href="#computational-semantic-state-access" title="Permalink to this heading">¶</a></h4>
 <p>Methods annotated with <code class="docutils literal notranslate"><span class="pre">rule</span></code> generate additional triples during lifting.
 To this end, for each created object with such a method, the method is executed <em>in the current state</em> the return value of the execution is then added to the knowledge graph.
 The used property has the name <code class="docutils literal notranslate"><span class="pre">prog:&lt;class&gt;_&lt;method&gt;_builtin_res</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span> <span class="n">i</span><span class="p">)</span>
-      <span class="n">rule</span> <span class="n">Int</span> <span class="nf">double</span><span class="p">()</span> <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="p">;</span>
-<span class="n">end</span>
-<span class="n">main</span>
-  <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="k">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
-<span class="n">end</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
+<span class="w">      </span><span class="n">rule</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="nf">double</span><span class="p">()</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="p">;</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
+<span class="n">main</span><span class="w"></span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The lifting will generate the following axioms.</p>
@@ -263,7 +267,7 @@ run:obj1 prog:C_double_builtin_res 25.
 </section>
 </section>
 <section id="query-access">
-<h3>Query Access<a class="headerlink" href="#query-access" title="Permalink to this headline">¶</a></h3>
+<h3>Query Access<a class="headerlink" href="#query-access" title="Permalink to this heading">¶</a></h3>
 <p>Query access retrieves data from the lifted knowledge graph using queries.</p>
 <p>Retrieving a list of literals or lifted objects is done via the <code class="docutils literal notranslate"><span class="pre">access</span></code> top-level expression.
 It takes as its first parameter a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing an extended <a class="reference external" href="https://www.w3.org/TR/sparql11-overview/">SPARQL</a> query, which additionally may contain non-answer variables of the form <code class="docutils literal notranslate"><span class="pre">%i</span></code> for some strictly positive number <code class="docutils literal notranslate"><span class="pre">i</span></code>. The set of numbers for the non-answer variables must form an interval [1,n] for some n.
@@ -294,7 +298,7 @@ Each variable must have the name of a field of the type of the target location. 
 </div>
 </section>
 <section id="shape-access">
-<h3>Shape Access<a class="headerlink" href="#shape-access" title="Permalink to this headline">¶</a></h3>
+<h3>Shape Access<a class="headerlink" href="#shape-access" title="Permalink to this heading">¶</a></h3>
 <p>Shape access validates the correctness of the lifted knowledge graph with respect to a graph shape using the top-level expression <code class="docutils literal notranslate"><span class="pre">validate(Literal)</span></code>.
 The parameter must be a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing a path to <a class="reference external" href="https://www.w3.org/TR/shacl/">SHACL</a> shapes in <a class="reference external" href="https://www.w3.org/TR/turtle/">turtle</a> syntax.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Boolean</span> <span class="n">b</span>  <span class="o">=</span> <span class="n">validate</span><span class="p">(</span><span class="s2">&quot;examples/double.ttl&quot;</span><span class="p">);</span>
@@ -303,7 +307,7 @@ The parameter must be a <code class="docutils literal notranslate"><span class="
 <p>The execution fails if the file does not accessable or the SHACL shapes are mal-formed.</p>
 </section>
 <section id="concept-access">
-<h3>Concept Access<a class="headerlink" href="#concept-access" title="Permalink to this headline">¶</a></h3>
+<h3>Concept Access<a class="headerlink" href="#concept-access" title="Permalink to this heading">¶</a></h3>
 <p>Concept access retrieves the list of objects described by an OWL concept using the top-level expression <code class="docutils literal notranslate"><span class="pre">member(Literal)</span></code>.
 The parameter must be a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing a concept in <a class="reference external" href="https://www.w3.org/TR/owl2-manchester-syntax/">Manchester syntax</a>.
 For example, the following retrieves all members of class <code class="docutils literal notranslate"><span class="pre">C</span></code> that model some domain concept <code class="docutils literal notranslate"><span class="pre">domain:D</span></code>.</p>
@@ -318,7 +322,7 @@ For example, the following retrieves all members of class <code class="docutils 
 </section>
 </section>
 <section id="time-series-access">
-<h2>Time Series Access<a class="headerlink" href="#time-series-access" title="Permalink to this headline">¶</a></h2>
+<h2>Time Series Access<a class="headerlink" href="#time-series-access" title="Permalink to this heading">¶</a></h2>
 <p>While not semantic, a syntactically similar mechanism is available to query data from <a class="reference external" href="https://www.influxdata.com/">InfluxDB</a> databases.
 Syntactically, one passes different parameters to the <code class="docutils literal notranslate"><span class="pre">access</span></code> statement.
 The first parameter is a path to a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing a InfluxQL query, the second parameter is a mode of the form <code class="docutils literal notranslate"><span class="pre">INFLUXDB(StringLiteral)</span></code>,
@@ -344,7 +348,7 @@ In this case, the result is always a <code class="docutils literal notranslate">
 </div>
 </section>
 <section id="advanced-semantic-access">
-<h2>Advanced Semantic Access<a class="headerlink" href="#advanced-semantic-access" title="Permalink to this headline">¶</a></h2>
+<h2>Advanced Semantic Access<a class="headerlink" href="#advanced-semantic-access" title="Permalink to this heading">¶</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>The following section describes a feature that is on active development on a feature branch (<code class="docutils literal notranslate"><span class="pre">lazy</span></code>) and is not available on the master branch.</p>
@@ -354,11 +358,11 @@ To this end, a class can be annotated with a <em>retrieval query</em>, and a spe
 Furthermore, we enable lazy loading for retrieval queries:
 if a class <code class="docutils literal notranslate"><span class="pre">C</span></code> refers to another class <code class="docutils literal notranslate"><span class="pre">D</span></code> through a field <code class="docutils literal notranslate"><span class="pre">f</span></code>, then the query of the second class <code class="docutils literal notranslate"><span class="pre">D</span></code> is only executed if the field <code class="docutils literal notranslate"><span class="pre">f</span></code> is accessed.</p>
 <section id="retrieval-queries">
-<h3>Retrieval Queries<a class="headerlink" href="#retrieval-queries" title="Permalink to this headline">¶</a></h3>
+<h3>Retrieval Queries<a class="headerlink" href="#retrieval-queries" title="Permalink to this heading">¶</a></h3>
 <p><em>retrieve, anchor</em></p>
 </section>
 <section id="lazy-loading">
-<h3>Lazy Loading<a class="headerlink" href="#lazy-loading" title="Permalink to this headline">¶</a></h3>
+<h3>Lazy Loading<a class="headerlink" href="#lazy-loading" title="Permalink to this heading">¶</a></h3>
 <p><em>QFut etc.</em></p>
 </section>
 </section>
@@ -375,7 +379,7 @@ if a class <code class="docutils literal notranslate"><span class="pre">C</span>
       &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

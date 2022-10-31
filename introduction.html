@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Introduction &#8212; SMOL  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Getting Started" href="getting-started.html" />
@@ -50,18 +52,16 @@
 <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#smol-a-language-based-integration-of-knowledge-graphs-and-object-oriented-programs">SMOL: a language-based integration of knowledge graphs and object-oriented programs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smol-features">SMOL features</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#semantic-web-technologies-and-smol">Semantic Web Technologies and SMOL</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#co-simulation-and-smol">Co-Simulation and SMOL</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 <div class="relations">
@@ -82,7 +82,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -100,19 +100,61 @@
           <div class="body" role="main">
             
   <section id="introduction">
-<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
-<p>SMOL is an imperative, object-oriented research language.  SMOL integrates
-semantic web technologies and numerical simulation blocks, and can serve as a
-test bed for creating digital twins.</p>
+<h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">¶</a></h1>
+<section id="smol-a-language-based-integration-of-knowledge-graphs-and-object-oriented-programs">
+<h2>SMOL: a language-based integration of knowledge graphs and object-oriented programs<a class="headerlink" href="#smol-a-language-based-integration-of-knowledge-graphs-and-object-oriented-programs" title="Permalink to this heading">¶</a></h2>
+<p>Digital Twins and similar applications typically connect simulators with
+data-rich components and domain knowledge, both commonly formalised as
+knowledge graphs. Engineering such applications poses challenges to
+developers, which we address using a language-based approach to enable their
+efficient development, as well as explore analysis and design: <strong>SMOL</strong> is an
+imperative, object-oriented research language which integrates semantic web
+technologies and numerical simulation blocks, and can serve as a test bed for
+creating digital twins.</p>
+<p>SMOL proposes a <em>language-based integration of knowledge graphs and
+object-oriented programs</em>. SMOL programs can contain queries to external
+knowledge graphs that contain, e.g., domain knowledge about an application
+domain. SMOL further proposes <em>semantic reflection</em> of programs into knowledge
+graphs by lifting the runtime state of the program into an associated
+knowledge graph, which enables programs to directly query this semantic
+representation of itself at runtime. This way, programs can make use of domain
+knowledge in the knowledge graph. Semantic reflection in SMOL can be used in
+interesting ways by giving the program access to formalised domain knowledge
+about its own runtime state, for example for debugging but also for system
+reconfiguration.</p>
+<p>SMOL can be used as a framework for developing digital twins. For digital
+twins, the knowledge graphs can be used to capture asset models. SMOL programs
+can then <em>seamlessly interact with asset models and domain knowledge</em> to
+configure and adapt, e.g., simulators. SMOL uses Functional Mock-Up Objects
+(FMOs) as a programming layer to encapsulate simulators compliant with the FMI
+standard into OO structures and integrates FMOs into the class and type
+systems. By means of the semantic lifting, the FMOs can be integrated into
+knowledge graphs and used to ensure structural correctness properties for
+cyber-physical applications.</p>
+</section>
+<section id="smol-features">
+<h2>SMOL features<a class="headerlink" href="#smol-features" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Imperative, object-oriented language</p></li>
+<li><p>Seamless integration of programs and knowledge bases</p></li>
+<li><p>Built-in reflection of program state in the knowledge base</p></li>
+<li><p>Knowledge bases can be queried from SMOL programs</p></li>
+<li><p>Encapsulation of simulators in objects based on the FMI standard</p></li>
+</ul>
+<dl class="simple">
+<dt><strong>Open source</strong>. SMOL is released under the terms of the 3-clause BSD licence,</dt><dd><p>the source is available at <a class="reference external" href="https://github.com/smolang/SemanticObjects">https://github.com/smolang/SemanticObjects</a>.</p>
+</dd>
+</dl>
+</section>
 <section id="semantic-web-technologies-and-smol">
-<h2>Semantic Web Technologies and SMOL<a class="headerlink" href="#semantic-web-technologies-and-smol" title="Permalink to this headline">¶</a></h2>
+<h2>Semantic Web Technologies and SMOL<a class="headerlink" href="#semantic-web-technologies-and-smol" title="Permalink to this heading">¶</a></h2>
 <p>SMOL supports <em>semantic lifting</em> of program state: objects and their fields
 are represented as <a class="reference internal" href="glossary.html#term-RDF"><span class="xref std std-term">RDF</span></a> triples and can be processed via standard semantic web
 technologies like <a class="reference internal" href="glossary.html#term-SPARQL"><span class="xref std std-term">SPARQL</span></a>.  An external ontology can be used to give additional
 semantics to the lifted program state.  Section <a class="reference internal" href="semantic-access.html#semantic-access"><span class="std std-ref">Semantic Access</span></a> describes this in detail.</p>
 </section>
 <section id="co-simulation-and-smol">
-<h2>Co-Simulation and SMOL<a class="headerlink" href="#co-simulation-and-smol" title="Permalink to this headline">¶</a></h2>
+<h2>Co-Simulation and SMOL<a class="headerlink" href="#co-simulation-and-smol" title="Permalink to this heading">¶</a></h2>
 <p>Dynamic simulation model components (<a class="reference internal" href="glossary.html#term-FMU"><span class="xref std std-term">FMU</span></a>s) that follow the <a class="reference external" href="https://fmi-standard.org">FMI
 standard</a> can be directly integrated into SMOL
 code.  A SMOL program can drive the dynamic model inputs and controls the
@@ -133,7 +175,7 @@ Section <a class="reference internal" href="fmos.html#fmos"><span class="std std
       &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

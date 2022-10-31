@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Expressions &#8212; SMOL  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,11 +12,13 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Statements" href="statements.html" />
-    <link rel="prev" title="Lexical Structure" href="lexical-structure.html" />
+    <link rel="prev" title="Datatypes" href="datatypes.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -51,38 +53,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Expressions</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#literal-expressions">Literal Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#unary-and-binary-operator-expressions">Unary and Binary Operator Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-null-expression">The Null Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-this-expression">The This Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-variable-expression">The Variable Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-field-expression">The Field Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-fmu-field-expression">The FMU Field Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-new-expression">The New Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-new-fmu-expression">The New FMU Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-method-call-expression">The Method Call Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-super-expression">The <code class="docutils literal notranslate"><span class="pre">super</span></code> Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-query-expression">The Query Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-construct-expression">The Construct Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-concept-expression">The Concept Expression</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-shape-expression">The Shape Expression</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="language.html">Language Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statements.html">Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
-      <li>Previous: <a href="lexical-structure.html" title="previous chapter">Lexical Structure</a></li>
+  <li><a href="language.html">The SMOL Language Manual</a><ul>
+      <li>Previous: <a href="datatypes.html" title="previous chapter">Datatypes</a></li>
       <li>Next: <a href="statements.html" title="next chapter">Statements</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -95,7 +88,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -113,7 +106,7 @@
           <div class="body" role="main">
             
   <section id="expressions">
-<h1>Expressions<a class="headerlink" href="#expressions" title="Permalink to this headline">¶</a></h1>
+<h1>Expressions<a class="headerlink" href="#expressions" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes all expressions of SMOL.  Informally, expressions are
 the language elements that can occur on the right hand side of an assignment (even though they can be written on their own, see <a class="reference internal" href="statements.html#expression-statement-ref"><span class="std std-ref">The Expression Statement</span></a>).</p>
 <p>Expressions are divided syntactially into two categories: <em>Simple
@@ -142,20 +135,20 @@ TopLevelExpression <span class="o">::=</span> NewExpression
 </pre></div>
 </div>
 <section id="literal-expressions">
-<h2>Literal Expressions<a class="headerlink" href="#literal-expressions" title="Permalink to this headline">¶</a></h2>
+<h2>Literal Expressions<a class="headerlink" href="#literal-expressions" title="Permalink to this heading">¶</a></h2>
 <p>All literals, as defined in <a class="reference internal" href="lexical-structure.html#literals-ref"><span class="std std-ref">Literals</span></a>, can be used as simple expressions.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>LiteralExpression <span class="o">::=</span> Literal
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;This is a string&quot;</span>
-<span class="mf">5.13</span>
-<span class="kc">false</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="s">&quot;This is a string&quot;</span><span class="w"></span>
+<span class="mf">5.13</span><span class="w"></span>
+<span class="kc">false</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="unary-and-binary-operator-expressions">
-<h2>Unary and Binary Operator Expressions<a class="headerlink" href="#unary-and-binary-operator-expressions" title="Permalink to this headline">¶</a></h2>
+<h2>Unary and Binary Operator Expressions<a class="headerlink" href="#unary-and-binary-operator-expressions" title="Permalink to this heading">¶</a></h2>
 <p>SMOL has a range of unary and binary operators working on pre-defined
 datatypes.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>OperatorExpression <span class="o">::=</span> UnaryOperatorExpression | BinaryOperatorExpression
@@ -170,8 +163,8 @@ BinaryOperator <span class="o">::=</span> &#39;/&#39; | &#39;%&#39; | &#39;*&#39
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="o">/</span> <span class="mi">2</span>
-<span class="n">bid</span> <span class="o">&gt;</span> <span class="n">price</span> <span class="o">||</span> <span class="n">customer</span> <span class="o">==</span> <span class="s">&quot;VIP&quot;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<span class="n">bid</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">price</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="n">customer</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s">&quot;VIP&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 <p>The following table describes the meaning as well as the associativity and the
@@ -179,12 +172,6 @@ precedence of the different operators. The list is sorted from low precedence
 to high precedence.</p>
 <table class="docutils align-left" id="id1">
 <caption><span class="caption-text">Operators</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
-<colgroup>
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-<col style="width: 25%" />
-</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Expression</p></th>
 <th class="head"><p>Meaning</p></th>
@@ -266,7 +253,7 @@ to high precedence.</p>
 </tbody>
 </table>
 <section id="semantics-of-comparison-operators">
-<h3>Semantics of Comparison Operators<a class="headerlink" href="#semantics-of-comparison-operators" title="Permalink to this headline">¶</a></h3>
+<h3>Semantics of Comparison Operators<a class="headerlink" href="#semantics-of-comparison-operators" title="Permalink to this heading">¶</a></h3>
 <p>Equality and inequality comparison is standard: by value for datatypes and by
 reference for objects. I.e., two strings “Hello” compare as identical via
 <code class="docutils literal notranslate"><span class="pre">==</span></code>, as do two numbers. Two references to objects compare as identical via
@@ -278,7 +265,7 @@ numbers of different types (integers vs floats) in the expected way.</p>
 </section>
 </section>
 <section id="the-null-expression">
-<h2>The Null Expression<a class="headerlink" href="#the-null-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Null Expression<a class="headerlink" href="#the-null-expression" title="Permalink to this heading">¶</a></h2>
 <p>The null expression evaluates to a value denoting an invalid object.  It can
 be used, e.g., to initialize a variable that will be assigned another value
 later in the program.</p>
@@ -286,12 +273,12 @@ later in the program.</p>
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kc">null</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kc">null</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-this-expression">
-<h2>The This Expression<a class="headerlink" href="#the-this-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The This Expression<a class="headerlink" href="#the-this-expression" title="Permalink to this heading">¶</a></h2>
 <p>This expression evaluates to the current object.  This expression cannot be
 used in the main block, since the main block does not execute within the scope
 of an object.</p>
@@ -299,24 +286,24 @@ of an object.</p>
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-variable-expression">
-<h2>The Variable Expression<a class="headerlink" href="#the-variable-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Variable Expression<a class="headerlink" href="#the-variable-expression" title="Permalink to this heading">¶</a></h2>
 <p>Variable expressions evaluate to the current content of the named variable.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>VariableExpression <span class="o">::=</span> Identifier
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">x</span>
-<span class="n">a_long_variable_name</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="w"></span>
+<span class="n">a_long_variable_name</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-field-expression">
-<h2>The Field Expression<a class="headerlink" href="#the-field-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Field Expression<a class="headerlink" href="#the-field-expression" title="Permalink to this heading">¶</a></h2>
 <p>Field expressions evaluate to the current content of the named field in the
 given object.  The object can be <code class="docutils literal notranslate"><span class="pre">this</span></code> or another object.</p>
 <p>Note that fields of the current object cannot be accessed without the <code class="docutils literal notranslate"><span class="pre">this.</span></code> prefix.</p>
@@ -324,25 +311,25 @@ given object.  The object can be <code class="docutils literal notranslate"><spa
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="na">x</span>
-<span class="n">an_object</span><span class="p">.</span><span class="na">a_long_field_name</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="na">x</span><span class="w"></span>
+<span class="n">an_object</span><span class="p">.</span><span class="na">a_long_field_name</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-fmu-field-expression">
-<h2>The FMU Field Expression<a class="headerlink" href="#the-fmu-field-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The FMU Field Expression<a class="headerlink" href="#the-fmu-field-expression" title="Permalink to this heading">¶</a></h2>
 <p>This expression reads the current value of the named out port of the given
 <a class="reference internal" href="glossary.html#term-FMU"><span class="xref std std-term">FMU</span></a>.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>FmuFieldExpression <span class="o">::=</span> SimpleExpression &#39;.&#39; &#39;port&#39; &#39;(&#39; StringLiteral &#39;)&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">my_fmu</span><span class="p">.</span><span class="na">port</span><span class="p">(</span><span class="s">&quot;outport&quot;</span><span class="p">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">my_fmu</span><span class="p">.</span><span class="na">port</span><span class="p">(</span><span class="s">&quot;outport&quot;</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-new-expression">
-<h2>The New Expression<a class="headerlink" href="#the-new-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The New Expression<a class="headerlink" href="#the-new-expression" title="Permalink to this heading">¶</a></h2>
 <p>The New expression creates a new object of the given class.  Values for the
 class’s constructor parameters are given as simple expressions inside
 parentheses. All generic type parameters of a class must be instantiated.</p>
@@ -353,12 +340,12 @@ clause of the new object’s class declarations (see
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">new</span> <span class="n">Person</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span> <span class="n">models</span> <span class="s">&quot;a :person&quot;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;Name&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">35</span><span class="p">)</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :person&quot;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-new-fmu-expression">
-<h2>The New FMU Expression<a class="headerlink" href="#the-new-fmu-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The New FMU Expression<a class="headerlink" href="#the-new-fmu-expression" title="Permalink to this heading">¶</a></h2>
 <p>This expression creates a new instance of the given FMU.  The expression takes
 first a literal string containing the path to the FMU file, followed by zero
 or more initializer terms for the FMU’s parameters.  All parameters specified
@@ -367,24 +354,24 @@ by the FMU in its <code class="docutils literal notranslate"><span class="pre">m
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;../Sim.fmu&quot;</span><span class="p">,</span> <span class="n">iValue</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">,</span> <span class="n">slope</span> <span class="o">=</span> <span class="mf">1.5</span><span class="p">)</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;../Sim.fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">iValue</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">0.0</span><span class="p">,</span><span class="w"> </span><span class="n">slope</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.5</span><span class="p">)</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-method-call-expression">
-<h2>The Method Call Expression<a class="headerlink" href="#the-method-call-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Method Call Expression<a class="headerlink" href="#the-method-call-expression" title="Permalink to this heading">¶</a></h2>
 <p>This expression invokes the named method on the given object instance.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>MethodCallExpression <span class="o">::=</span> Expression &#39;.&#39; Identifier &#39;(&#39; ( SimpleExpression ( &#39;,&#39; SimpleExpression)* )? &#39;)&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="na">doWork</span><span class="p">();</span>
-<span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">this</span><span class="p">.</span><span class="na">doWork</span><span class="p">();</span><span class="w"></span>
+<span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-super-expression">
-<h2>The <code class="docutils literal notranslate"><span class="pre">super</span></code> Expression<a class="headerlink" href="#the-super-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The <code class="docutils literal notranslate"><span class="pre">super</span></code> Expression<a class="headerlink" href="#the-super-expression" title="Permalink to this heading">¶</a></h2>
 <p>This expression invokes the method as defined in a superclass of the current
 object’s class from within the overriding method.  The <code class="docutils literal notranslate"><span class="pre">super</span></code> expression is
 only valid inside a method that overrides a superclass’s method.</p>
@@ -392,12 +379,12 @@ only valid inside a method that overrides a superclass’s method.</p>
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">super</span><span class="p">.</span><span class="na">doWork</span><span class="p">()</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="kd">super</span><span class="p">.</span><span class="na">doWork</span><span class="p">()</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-query-expression">
-<h2>The Query Expression<a class="headerlink" href="#the-query-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Query Expression<a class="headerlink" href="#the-query-expression" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">access</span></code> top-level expression retrieves a list of literals or lifted objects using a query mode <code class="docutils literal notranslate"><span class="pre">SPARQL</span></code> to access the semantically lifted state or <code class="docutils literal notranslate"><span class="pre">INFLUXDB</span></code> to access an external InfluxDB database. If no query mode is given, <code class="docutils literal notranslate"><span class="pre">SPARQL</span></code> is the default.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>QueryMode <span class="o">::=</span> &#39;SPARQL&#39; | (&#39;INFLUXDB&#39; &#39;(&#39; StringLiteral &#39;)&#39;)
 
@@ -432,7 +419,7 @@ end
 </div>
 </section>
 <section id="the-construct-expression">
-<h2>The Construct Expression<a class="headerlink" href="#the-construct-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Construct Expression<a class="headerlink" href="#the-construct-expression" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">construct</span></code> top-level expression constructs a list of <em>new</em> objects from a SPARQL query.
 Its parameters are as the one of the <code class="docutils literal notranslate"><span class="pre">access</span></code> top-level expression, but the variables are handled differently:</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ConstructExpression <span class="o">::=</span> &#39;construct&#39; &#39;(&#39; Expression ( &#39;,&#39; SimpleExpression)* &#39;)&#39;
@@ -447,7 +434,7 @@ List<span class="p">&lt;</span><span class="nc">C</span><span class="p">&gt;</sp
 </div>
 </section>
 <section id="the-concept-expression">
-<h2>The Concept Expression<a class="headerlink" href="#the-concept-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Concept Expression<a class="headerlink" href="#the-concept-expression" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">member</span></code> top-level expression retrieves the list of objects described by an OWL concept.
 The parameter must be a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing a concept in <a class="reference external" href="https://www.w3.org/TR/owl2-manchester-syntax/">Manchester syntax</a>.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ConceptExpression <span class="o">::=</span> &#39;member&#39; &#39;(&#39; Expression &#39;)&#39;
@@ -460,7 +447,7 @@ The parameter must be a <code class="docutils literal notranslate"><span class="
 <p>The execution fails if the concept is either mal-formed or contains elements that are not IRIs of lifted objects.</p>
 </section>
 <section id="the-shape-expression">
-<h2>The Shape Expression<a class="headerlink" href="#the-shape-expression" title="Permalink to this headline">¶</a></h2>
+<h2>The Shape Expression<a class="headerlink" href="#the-shape-expression" title="Permalink to this heading">¶</a></h2>
 <p>Shape access validates the correctness of the lifted knowledge graph with respect to a graph shape using the top-level expression <code class="docutils literal notranslate"><span class="pre">validate(Literal)</span></code>.
 The parameter must be a <code class="docutils literal notranslate"><span class="pre">String</span></code>-literal containing a path to <a class="reference external" href="https://www.w3.org/TR/shacl/">SHACL</a> shapes in <a class="reference external" href="https://www.w3.org/TR/turtle/">turtle</a> syntax.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ShapeExpression <span class="o">::=</span> &#39;validate&#39; &#39;(&#39; Expression &#39;)&#39;
@@ -485,7 +472,7 @@ The parameter must be a <code class="docutils literal notranslate"><span class="
       &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

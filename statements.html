@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Statements &#8212; SMOL  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,7 +12,9 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="Classes" href="classes.html" />
@@ -51,34 +53,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Statements</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#the-skip-statement">The Skip Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-expression-statement">The Expression Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-variable-declaration-statement">The Variable Declaration Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-assignment-statement">The Assignment Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-conditional-statement">The Conditional Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-while-loop">The While Loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-return-statement">The Return Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-tick-statement">The Tick Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-breakpoint-statement">The Breakpoint Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-print-statement">The Print Statement</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-destroy-statement">The Destroy Statement</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="language.html">Language Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">Expressions</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="glossary.html">Glossary</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l1"><a class="reference internal" href="glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="language.html">The SMOL Language Manual</a><ul>
       <li>Previous: <a href="expressions.html" title="previous chapter">Expressions</a></li>
       <li>Next: <a href="classes.html" title="next chapter">Classes</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -91,7 +88,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -109,7 +106,7 @@
           <div class="body" role="main">
             
   <section id="statements">
-<h1>Statements<a class="headerlink" href="#statements" title="Permalink to this headline">¶</a></h1>
+<h1>Statements<a class="headerlink" href="#statements" title="Permalink to this heading">¶</a></h1>
 <p>This chapter specifies all SMOL statements.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>Statement <span class="o">::=</span> SkipStatement
             | ExpressionStatement
@@ -125,30 +122,30 @@
 </pre></div>
 </div>
 <section id="the-skip-statement">
-<h2>The Skip Statement<a class="headerlink" href="#the-skip-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Skip Statement<a class="headerlink" href="#the-skip-statement" title="Permalink to this heading">¶</a></h2>
 <p>The skip statement is a statement that does nothing.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>SkipStatement <span class="o">::=</span> &#39;skip&#39; &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">skip</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">skip</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-expression-statement">
-<span id="expression-statement-ref"></span><h2>The Expression Statement<a class="headerlink" href="#the-expression-statement" title="Permalink to this headline">¶</a></h2>
+<span id="expression-statement-ref"></span><h2>The Expression Statement<a class="headerlink" href="#the-expression-statement" title="Permalink to this heading">¶</a></h2>
 <p>All expressions can be written as statements on their own, i.e., without assigning their value to a variable.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ExpressionStatement <span class="o">::=</span> Expression &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span>
-<span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span><span class="w"></span>
+<span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-variable-declaration-statement">
-<h2>The Variable Declaration Statement<a class="headerlink" href="#the-variable-declaration-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Variable Declaration Statement<a class="headerlink" href="#the-variable-declaration-statement" title="Permalink to this heading">¶</a></h2>
 <p>This statement declares a variable in the current scope.  All variables must
 have an initial value.</p>
 <div class="admonition note">
@@ -161,25 +158,25 @@ the method, even if declared inside a more limited scope like the body of a
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Boolean</span> <span class="n">result</span> <span class="o">=</span> <span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span>
-<span class="n">Int</span> <span class="n">a_number</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">Boolean</span><span class="w"> </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span><span class="w"></span>
+<span class="n">Int</span><span class="w"> </span><span class="n">a_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-assignment-statement">
-<h2>The Assignment Statement<a class="headerlink" href="#the-assignment-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Assignment Statement<a class="headerlink" href="#the-assignment-statement" title="Permalink to this heading">¶</a></h2>
 <p>This statement assigns a new value to a given variable or field.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>AssignmentStatement <span class="o">::=</span> ( VariableExpression | FieldExpression ) &#39;:=&#39; Expression &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">result</span> <span class="o">=</span> <span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span>
-<span class="n">a_number</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">3</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span><span class="w"></span>
+<span class="n">a_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-conditional-statement">
-<h2>The Conditional Statement<a class="headerlink" href="#the-conditional-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Conditional Statement<a class="headerlink" href="#the-conditional-statement" title="Permalink to this heading">¶</a></h2>
 <p>The conditional statement executes either the statements in its consequent
 branch or, if given, the statements in its alternate branch, depending on the
 value of its ocnditional expression.</p>
@@ -190,82 +187,82 @@ value of its ocnditional expression.</p>
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">a_number</span> <span class="o">&gt;</span> <span class="mi">17</span> <span class="n">then</span>
-    <span class="n">a_number</span> <span class="o">=</span> <span class="o">-</span> <span class="n">a_number</span><span class="p">;</span>
-<span class="k">else</span>
-    <span class="n">a_number</span> <span class="o">=</span> <span class="n">a_number</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
-<span class="n">end</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="n">a_number</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">17</span><span class="w"> </span><span class="n">then</span><span class="w"></span>
+<span class="w">    </span><span class="n">a_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">a_number</span><span class="p">;</span><span class="w"></span>
+<span class="k">else</span><span class="w"></span>
+<span class="w">    </span><span class="n">a_number</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a_number</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-while-loop">
-<h2>The While Loop<a class="headerlink" href="#the-while-loop" title="Permalink to this headline">¶</a></h2>
+<h2>The While Loop<a class="headerlink" href="#the-while-loop" title="Permalink to this heading">¶</a></h2>
 <p>The while loop executes the statements in its body repeatedly, as long as the
 condition evaluates to true beforehand.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>WhileStatement <span class="o">::=</span> &#39;while&#39; SimpleExpression &#39;do&#39; Statement+ &#39;end&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">while</span> <span class="o">!</span><span class="n">result</span> <span class="k">do</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span>
-<span class="n">end</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">while</span><span class="w"> </span><span class="o">!</span><span class="n">result</span><span class="w"> </span><span class="k">do</span><span class="w"></span>
+<span class="w">    </span><span class="n">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">worker</span><span class="p">.</span><span class="na">processRequest</span><span class="p">();</span><span class="w"></span>
+<span class="n">end</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-return-statement">
-<h2>The Return Statement<a class="headerlink" href="#the-return-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Return Statement<a class="headerlink" href="#the-return-statement" title="Permalink to this heading">¶</a></h2>
 <p>The return statement finishes execution of the current method and returns the
 value of its argument to the caller of the method.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ReturnStatement <span class="o">::=</span> &#39;return&#39; SimpleExpression &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="k">return</span><span class="w"> </span><span class="kc">false</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-tick-statement">
-<h2>The Tick Statement<a class="headerlink" href="#the-tick-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Tick Statement<a class="headerlink" href="#the-tick-statement" title="Permalink to this heading">¶</a></h2>
 <p>The Tick statements advances time for the given FMU by the given amount.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>TickStatement <span class="o">::=</span> SimpleExpression &#39;.&#39; &#39;tick&#39; &#39;(&#39; SimpleExpression &#39;)&#39; &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">my_fmu</span><span class="p">.</span><span class="na">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">my_fmu</span><span class="p">.</span><span class="na">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-breakpoint-statement">
-<h2>The Breakpoint Statement<a class="headerlink" href="#the-breakpoint-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Breakpoint Statement<a class="headerlink" href="#the-breakpoint-statement" title="Permalink to this heading">¶</a></h2>
 <p>The breakpoint statement interrupts execution and transfers control to the
 REPL.  Execution can be resumed at the REPL via the <code class="docutils literal notranslate"><span class="pre">auto</span></code> command.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>BreakpointStatement <span class="o">::=</span> &#39;breakpoint&#39; &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">breakpoint</span><span class="p">;</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">breakpoint</span><span class="p">;</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-print-statement">
-<h2>The Print Statement<a class="headerlink" href="#the-print-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Print Statement<a class="headerlink" href="#the-print-statement" title="Permalink to this heading">¶</a></h2>
 <p>The print statement evaluates its argument and prints the resulting value to
 the terminal.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>PrintStatement <span class="o">::=</span> &#39;print&#39; &#39;(&#39; SimpleExpression &#39;)&#39; &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Checkpoint reached&quot;</span><span class="p">);</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">print</span><span class="p">(</span><span class="s">&quot;Checkpoint reached&quot;</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
 <section id="the-destroy-statement">
-<h2>The Destroy Statement<a class="headerlink" href="#the-destroy-statement" title="Permalink to this headline">¶</a></h2>
+<h2>The Destroy Statement<a class="headerlink" href="#the-destroy-statement" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>DestroyStatement <span class="o">::=</span> &#39;destroy&#39; &#39;(&#39; SimpleExpression &#39;)&#39; &#39;;&#39;
 </pre></div>
 </div>
 <p><em>Example:</em></p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">destroy</span><span class="p">(</span><span class="n">my_object</span><span class="p">);</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">destroy</span><span class="p">(</span><span class="n">my_object</span><span class="p">);</span><span class="w"></span>
 </pre></div>
 </div>
 </section>
@@ -282,7 +279,7 @@ the terminal.</p>
       &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |

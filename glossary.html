@@ -1,10 +1,10 @@
 
 <!DOCTYPE html>
 
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
     <title>Glossary &#8212; SMOL  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
@@ -12,9 +12,12 @@
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
     <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="The SMOL Tutorial" href="tutorial.html" />
     <link rel="prev" title="Functional Mock-Up Objects" href="fmos.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
@@ -50,20 +53,29 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l1"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l1"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l1"><a class="reference internal" href="classes.html">Classes</a></li>
-<li class="toctree-l1"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
-<li class="toctree-l1"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Glossary</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="language.html">Language Manual</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="expressions.html">Expressions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="statements.html">Statements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classes.html">Classes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Glossary</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
 <div class="relations">
 <h3>Related Topics</h3>
 <ul>
   <li><a href="index.html">Documentation overview</a><ul>
+  <li><a href="language.html">The SMOL Language Manual</a><ul>
       <li>Previous: <a href="fmos.html" title="previous chapter">Functional Mock-Up Objects</a></li>
+      <li>Next: <a href="tutorial.html" title="next chapter">The SMOL Tutorial</a></li>
+  </ul></li>
   </ul></li>
 </ul>
 </div>
@@ -76,7 +88,7 @@
     </form>
     </div>
 </div>
-<script>$('#searchbox').show(0);</script>
+<script>document.getElementById('searchbox').style.display = "block"</script>
 
 
 
@@ -94,8 +106,8 @@
           <div class="body" role="main">
             
   <section id="glossary">
-<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this headline">¶</a></h1>
-<dl class="glossary simple">
+<h1>Glossary<a class="headerlink" href="#glossary" title="Permalink to this heading">¶</a></h1>
+<dl class="simple glossary">
 <dt id="term-EBNF">EBNF<a class="headerlink" href="#term-EBNF" title="Permalink to this term">¶</a></dt><dd><p>Extended Backus-Naur Form, a notation for formally specifying syntax.  We use the definition found at <a class="reference external" href="https://www.w3.org/TR/2006/REC-xml11-20060816/#sec-notation">https://www.w3.org/TR/2006/REC-xml11-20060816/#sec-notation</a>.</p>
 </dd>
 <dt id="term-FMU">FMU<a class="headerlink" href="#term-FMU" title="Permalink to this term">¶</a></dt><dd><p>Functional Mock-up Unit, a simulation model following the <a class="reference external" href="https://fmi-standard.org">FMI standard</a> for multi-model simulation.</p>
@@ -121,7 +133,7 @@ entering commands on a keyboard.</p>
       &copy;2022, Eduard Kamburjan, Rudolf Schlatte.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 4.4.0</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 5.3.0</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
       
       |
