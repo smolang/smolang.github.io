@@ -6,20 +6,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
 
-    <title>Classes &#8212; The SMOL Language  documentation</title>
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
+    <title>Internals &#8212; The SMOL Language  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=0.7.0-1" />
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/sphinx_highlight.js"></script>
     <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
-    <script src="../_static/js/theme.js"></script>
-    <script src="../_static/js/petite-vue.js"></script>
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Semantic Access" href="semantic-access.html" />
-    <link rel="prev" title="Statements" href="statements.html" /> 
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/petite-vue.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Publications and Contributors" href="publications.html" />
+    <link rel="prev" title="Semantically Reflected Digital Twins" href="tutorial/semantical-reflection.html" /> 
   </head><body data-dark_mode_code_blocks="true">
 
 <div id="top_nav">
@@ -33,7 +33,7 @@
         <p id="toggle_sidebar">
             <a href="#" title="Toggle sidebar">|||</a>
         </p>
-        <h1><a href="../index.html" title="Go to homepage">SMOL</a></h1>
+        <h1><a href="index.html" title="Go to homepage">SMOL</a></h1>
             <a id="source_link" href="https://github.com/smolang/SemanticObjects/">
     
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
@@ -103,7 +103,7 @@
 })()
 </script>
             <p class="mobile_search_link">
-                <a href="../search.html" title="Search">
+                <a href="search.html" title="Search">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 65 64" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2">
                         <path d="M14.873 40.009c-2.315-3.943-3.642-8.532-3.642-13.429C11.231 11.91 23.141 0 37.811 0s26.58 11.91 26.58 26.58-11.91 26.58-26.58 26.58a26.44 26.44 0 0 1-14.277-4.161L9.739 62.794a3.12 3.12 0 0 1-4.413 0L.913 58.382c-1.217-1.218-1.217-3.196 0-4.413l13.96-13.96zM37.811 8.054c10.225 0 18.526 8.301 18.526 18.526s-8.301 18.526-18.526 18.526-18.526-8.301-18.526-18.526S27.586 8.054 37.811 8.054z" fill="#fff" />
                     </svg>
@@ -116,7 +116,7 @@
 <div id="searchbox" style="display: none" role="search">
   <h3 id="searchlabel">Quick search</h3>
     <div class="searchformwrapper">
-    <form class="search" action="../search.html" method="get">
+    <form class="search" action="search.html" method="get">
       <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
       <input type="submit" value="Go" />
     </form>
@@ -130,22 +130,12 @@
     
       <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
         <div class="sphinxsidebarwrapper"><ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../getting-started.html">Getting Started</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../language.html">Language Manual</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="lexical-structure.html">Lexical Structure</a></li>
-<li class="toctree-l2"><a class="reference internal" href="datatypes.html">Datatypes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="expressions.html">Expressions</a></li>
-<li class="toctree-l2"><a class="reference internal" href="statements.html">Statements</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Classes</a></li>
-<li class="toctree-l2"><a class="reference internal" href="semantic-access.html">Semantic Access</a></li>
-<li class="toctree-l2"><a class="reference internal" href="fmos.html">Functional Mock-Up Objects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../glossary.html">Glossary</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting-started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="language.html">Language Manual</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Internals</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
 </ul>
 
         </div>
@@ -157,54 +147,47 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="classes">
-<h1>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h1>
-<p>All code to be executed in SMOL, with the exception of the main block, is
-contained in classes.  Classes define fields and methods.  Classes are
-instantiated in objects via the <code class="docutils literal notranslate"><span class="pre">new</span></code> expression, all objects of a class
-share the same methods and fields.  Each object’s fields hold different state
-that can change over time.</p>
-<section id="class-declarations">
-<span id="class-declaration-ref"></span><h2>Class Declarations<a class="headerlink" href="#class-declarations" title="Permalink to this heading">¶</a></h2>
-<p>A class can have generic type parameters, field declarations, methods and a modelling bridge.
-Additionally a class may be abstract and contain abstract methods. An abstract class may containt non-abstract methods.</p>
-<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ClassDeclaration <span class="o">::=</span> &#39;abstract&#39;?
-                     &#39;class&#39; Identifier ( &#39;<span class="p">&lt;</span><span class="nc">&#39; Identifier (&#39;,&#39; Identifier)* &#39;</span><span class="p">&gt;</span>&#39;)?
-                     (&#39;extends&#39; Type )?
-                     &#39;(&#39; (FieldDeclaration (&#39;,&#39; FieldDeclaration)* )? &#39;)&#39;
-                     ModelsDeclaration?
-                     MethodDefinition*
-                     &#39;end&#39;
-</pre></div>
-</div>
-<p>A field is declared using a type and a name.
-The <code class="docutils literal notranslate"><span class="pre">hidden</span></code> modifier disables semantic lifting for this field.
-The <code class="docutils literal notranslate"><span class="pre">domain</span></code> modifier moves the generated triples to the modelled node.
-A field cannot be <code class="docutils literal notranslate"><span class="pre">domain</span></code> and <code class="docutils literal notranslate"><span class="pre">hidden</span></code>.</p>
-<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>FieldDeclaration <span class="o">::=</span> &#39;hidden&#39;? &#39;domain&#39;?
-                      Type Identifier
-</pre></div>
-</div>
-<p><em>models</em></p>
-<p>The <code class="docutils literal notranslate"><span class="pre">models</span></code> declarations are used to connect object structure to semantic
-reflection; see Section <a class="reference internal" href="semantic-access.html#modeling-bridge"><span class="std std-ref">Modeling Bridge</span></a>.</p>
-<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>ModelsDeclaration <span class="o">::=</span> (&#39;models&#39; &#39;(&#39; Expression &#39;)&#39; StringLiteral &#39;;&#39;)*
-                      &#39;models&#39; StringLiteral &#39;;&#39;
-</pre></div>
-</div>
-<p><em>methods</em></p>
-<p>A <code class="docutils literal notranslate"><span class="pre">rule</span></code> method cannot have side-effects (no object creation, no writing field access), no parameters and can only call other <code class="docutils literal notranslate"><span class="pre">rule</span></code> methods.</p>
-<div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>MethodDefinition <span class="o">::=</span> ConcreteMethod | AbstractMethod
+  <section id="internals">
+<h1>Internals<a class="headerlink" href="#internals" title="Permalink to this heading">¶</a></h1>
+<p>This page contains a sketch of the SMOL implementation internals.</p>
+<section id="parsing-and-typechecking-program-flow">
+<h2>Parsing and Typechecking Program Flow<a class="headerlink" href="#parsing-and-typechecking-program-flow" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>SMOL input files are parsed via antlr; the antlr grammar can be found in <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/antlr/While.g4">src/main/antlr/While.g4</a>.</p></li>
+<li><p>Parsing, typechecking and preparation to run a SMOL program are done by the method <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/REPL.kt">REPL.initInterpreter</a>, which calls methods according to Figure <a class="reference internal" href="#parsing-flow-ref"><span class="std std-ref">Parsing Flow</span></a>.</p></li>
+</ul>
+<figure class="align-default" id="id1">
+<span id="parsing-flow-ref"></span><div class="mermaid">
+            flowchart TB
+    input([ `-i` argument or REPL `read` command])
+    antlr[[WhileParser.program]]
+    translate[[Translate.generateStatic]]
+    typecheck[TypeChecker]
+    interpret[Interpreter]
 
-ConcreteMethod <span class="o">::=</span> &#39;rule&#39;? &#39;domain&#39;? &#39;override&#39;?
-                     Type Identifier &#39;(&#39; (Type Identifier (&#39;,&#39; Type Identifier)* )? &#39;)&#39;
-                     Statement*
-                     &#39;end&#39;
+    click antlr &quot;https://github.com/smolang/SemanticObjects/blob/master/src/main/antlr/While.g4&quot; _blank
+    click translate &quot;https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/ast/Translate.kt&quot; _blank
+    click interpret &quot;https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/Interpreter.kt&quot; _blank
+    click typecheck &quot;https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/type/TypeChecker.kt&quot; _blank
 
-AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#39;domain&#39;? &#39;override&#39;?
-                     Type Identifier &#39;(&#39; (Type Identifier (&#39;,&#39; Type Identifier)* )? &#39;)&#39;
-</pre></div>
-</div>
+    input-- smol filename --&gt;antlr
+
+    subgraph REPL.initInterpreter
+    direction TB
+    antlr -- antlr tree --&gt;translate
+    antlr -- antlr tree --&gt;typecheck
+    translate -- StaticTable --&gt;interpret
+    translate -- StaticTable --&gt;typecheck
+    end
+        </div><figcaption>
+<p><span class="caption-text">The program flow of smol program text inside <code class="docutils literal notranslate"><span class="pre">REPL.initInterpreter</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</figcaption>
+</figure>
+</section>
+<section id="statement-execution">
+<h2>Statement Execution<a class="headerlink" href="#statement-execution" title="Permalink to this heading">¶</a></h2>
+<p>Executing a smol program is controlled by the <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/REPL.kt">REPL</a> class.  An  <code class="docutils literal notranslate"><span class="pre">Interpreter</span></code> object keeps track of the execution state, which consists of a stack of <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=data%20class%20StackEntry">StackEntry</a> objects and a <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=typealias%20GlobalMemory">GlobalMemory</a> instance, which in turn maps object names to their <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=typealias%20Memory">Memory</a>.</p>
+<p>A single statement is executed by the method <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/Interpreter.kt#:~:text=fun%20makeStep">Interpreter.makeStep</a>.</p>
 </section>
 </section>
 
@@ -222,8 +205,9 @@ AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#3
             <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
             <div class="page_toc">
                 <ul>
-<li><a class="reference internal" href="#">Classes</a><ul>
-<li><a class="reference internal" href="#class-declarations">Class Declarations</a></li>
+<li><a class="reference internal" href="#">Internals</a><ul>
+<li><a class="reference internal" href="#parsing-and-typechecking-program-flow">Parsing and Typechecking Program Flow</a></li>
+<li><a class="reference internal" href="#statement-execution">Statement Execution</a></li>
 </ul>
 </li>
 </ul>
@@ -238,14 +222,14 @@ AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#3
         <div class="button_nav">
             <div class="left">
                 
-                <a href="statements.html">
-                    <span class="icon"><</span><span>Statements</span></a>
+                <a href="tutorial/semantical-reflection.html">
+                    <span class="icon"><</span><span>Semantically Reflected Digital Twins</span></a>
                 
             </div>
 
             <div class="right">
                 
-                    <a href="semantic-access.html"><span>Semantic Access</span><span class="icon">></span></a>
+                    <a href="publications.html"><span>Publications and Contributors</span><span class="icon">></span></a>
                 
             </div>
         </div>

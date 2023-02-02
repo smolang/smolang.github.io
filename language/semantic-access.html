@@ -10,11 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -145,6 +144,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
 </ul>
 
@@ -212,16 +212,16 @@ COMPLEX_MODELS ::= `models` `(` Expression `)` STRING `;` MODELS;
 </pre></div>
 </div>
 <p>Example</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;a :containsPositive&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :containsNonPositive&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="s">&quot;a :containsPositive&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :containsNonPositive&quot;</span><span class="p">;</span>
+<span class="n">end</span>
 
-<span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :special&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<span class="n">main</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">e</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="s">&quot;a :special&quot;</span><span class="p">;</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 <p>The lifting will contain the following axioms:</p>
@@ -244,10 +244,10 @@ the standard one using the <code class="docutils literal notranslate"><span clas
 object in the domain, modelled by the created object. The two objects are connected using the <code class="docutils literal notranslate"><span class="pre">smol:models</span></code> property.</p>
 <p>If a field is annotated with <code class="docutils literal notranslate"><span class="pre">domain</span></code>, then it is lifted for the modelled object. Its prefix is also changed to <code class="docutils literal notranslate"><span class="pre">domain</span></code>.
 The same holds for methods (see CSSA.). The modelled object is only created during lifting if at least one field or method is annotated with <code class="docutils literal notranslate"><span class="pre">domain</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"></span>
-<span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">domain</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span>
+<span class="n">main</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="p">);</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 <p>The lifting of the created object is as follows.</p>
@@ -264,11 +264,11 @@ domain:obj1 domain:C_i 4.
 The field will be completely ignored during lifting: neither general axioms nor instances are generated.
 The <code class="docutils literal notranslate"><span class="pre">hidden</span></code> modifier does not interact with the visibility modifiers
 If the field is of object-type, the object it points to will still be lifted.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"></span>
-<span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="w"> </span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="n">hidden</span><span class="w"> </span><span class="n">C</span><span class="w"> </span><span class="n">j</span><span class="p">)</span><span class="w"> </span><span class="n">end</span>
+<span class="n">main</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="kc">null</span><span class="p">);</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="w"> </span><span class="n">c</span><span class="p">);</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 <p>The lifting will contain the following axioms. Note that <code class="docutils literal notranslate"><span class="pre">prog:C_j</span></code> is not mentioned.</p>
@@ -288,12 +288,12 @@ run:obj2 a prog:C;
 <p>Methods annotated with <code class="docutils literal notranslate"><span class="pre">rule</span></code> generate additional triples during lifting.
 To this end, for each created object with such a method, the method is executed <em>in the current state</em> the return value of the execution is then added to the knowledge graph.
 The used property has the name <code class="docutils literal notranslate"><span class="pre">prog:&lt;class&gt;_&lt;method&gt;_builtin_res</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span><span class="w"></span>
-<span class="w">      </span><span class="n">rule</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="nf">double</span><span class="p">()</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="p">;</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
-<span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="p">)</span>
+<span class="w">      </span><span class="n">rule</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="nf">double</span><span class="p">()</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="o">*</span><span class="k">this</span><span class="p">.</span><span class="na">i</span><span class="p">;</span>
+<span class="n">end</span>
+<span class="n">main</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 <p>The lifting will generate the following axioms.</p>
@@ -487,7 +487,7 @@ if a class <code class="docutils literal notranslate"><span class="pre">C</span>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

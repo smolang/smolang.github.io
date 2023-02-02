@@ -10,12 +10,11 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -142,6 +141,7 @@
 <li class="toctree-l2"><a class="reference internal" href="semantical-reflection.html">Semantic Reflection</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
 </ul>
 
@@ -165,6 +165,11 @@
 </ul>
 <section id="behavior-of-a-watertank">
 <h2>Behavior of a Watertank<a class="headerlink" href="#behavior-of-a-watertank" title="Permalink to this heading">¶</a></h2>
+<p>We will model a watertank with a pipe, such that turning on the pipe adds a
+constant amount of water per second to the current level of the tank.  The
+tank also has a drain hole at the bottom; the rate of outflow is dependent on
+the current water level of the tank.</p>
+<p>Mathematically, the behavior of the tank can be described by the following formula:</p>
 <div class="math notranslate nohighlight">
 \[l' = -d * l + v * f\]</div>
 <p>where</p>
@@ -174,6 +179,65 @@
 <li><p><span class="math notranslate nohighlight">\(f\)</span>: rate of inflow</p></li>
 <li><p><span class="math notranslate nohighlight">\(v\)</span>: valve control (0: valve is closed, 1: valve is open)</p></li>
 </ul>
+</section>
+<section id="the-watertank-in-modelica">
+<h2>The Watertank in Modelica<a class="headerlink" href="#the-watertank-in-modelica" title="Permalink to this heading">¶</a></h2>
+<p>The following Modelica model implements the watertank.  Note that we use a
+Boolean variable to model the valve status, and introduce a second equation
+explicitly defining the current inflow from the valve.</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="kr">model</span> <span class="nc">Tank</span>
+  <span class="kr">parameter</span> <span class="nb">Real</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span>        <span class="s2">&quot;drain rate / &#39;size of hole&#39;&quot;</span><span class="p">;</span>
+  <span class="kr">parameter</span> <span class="nb">Real</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0</span>        <span class="s2">&quot;fill rate in l/s (constant)&quot;</span><span class="p">;</span>
+  <span class="kr">input</span> <span class="nb">Boolean</span> <span class="n">v</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="kc">true</span><span class="p">)</span> <span class="s2">&quot;Valve closed / open&quot;</span><span class="p">;</span>
+  <span class="kr">output</span> <span class="nb">Real</span> <span class="n">l</span><span class="p">(</span><span class="n">start</span> <span class="o">=</span> <span class="mi">5</span><span class="p">)</span>      <span class="s2">&quot;water level&quot;</span><span class="p">;</span>
+  <span class="nb">Real</span> <span class="n">inFlow</span>                   <span class="s2">&quot;Current fill rate&quot;</span><span class="p">;</span>
+<span class="kr">equation</span>
+  <span class="kr">der</span><span class="p">(</span><span class="n">l</span><span class="p">)</span> <span class="o">=</span> <span class="n">inFlow</span> <span class="o">-</span> <span class="n">d</span> <span class="o">*</span> <span class="n">l</span><span class="p">;</span>
+  <span class="kr">if</span> <span class="n">v</span> <span class="kr">then</span> <span class="n">inFlow</span> <span class="o">=</span> <span class="n">f</span><span class="p">;</span> <span class="kr">else</span> <span class="n">inFlow</span> <span class="o">=</span> <span class="mf">0.0</span><span class="p">;</span> <span class="kr">end</span> <span class="kr">if</span><span class="p">;</span>
+<span class="kr">end</span> <span class="nc">Tank</span><span class="p">;</span>
+</pre></div>
+</div>
+</section>
+<section id="creating-an-fmu-for-the-watertank">
+<h2>Creating an FMU for the Watertank<a class="headerlink" href="#creating-an-fmu-for-the-watertank" title="Permalink to this heading">¶</a></h2>
+<p>OpenModelica can export Modelica models as FMUs.  This can be done by opening
+the model in the OMEdit application, or from the command line via the <code class="docutils literal notranslate"><span class="pre">omc</span></code>
+program.  To generate an FMU from the command line, save the above model in a
+file <code class="docutils literal notranslate"><span class="pre">simple_tank.mo</span></code> and create a file <code class="docutils literal notranslate"><span class="pre">generate_fmu.mos</span></code> with the
+following content:</p>
+<div class="highlight-modelica notranslate"><div class="highlight"><pre><span></span><span class="n">installPackage</span><span class="p">(</span><span class="n">Modelica</span><span class="p">);</span>
+<span class="n">loadModel</span><span class="p">(</span><span class="n">Modelica</span><span class="p">);</span>
+<span class="n">loadFile</span><span class="p">(</span><span class="s2">&quot;simple_tank.mo&quot;</span><span class="p">);</span>
+<span class="n">buildModelFMU</span><span class="p">(</span><span class="n">Tank</span><span class="p">,</span> <span class="n">version</span><span class="o">=</span><span class="s2">&quot;2.0&quot;</span><span class="p">,</span> <span class="n">fmuType</span><span class="o">=</span><span class="s2">&quot;me_cs&quot;</span><span class="p">);</span>
+<span class="n">getErrorString</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>Then, run the command <code class="docutils literal notranslate"><span class="pre">omc</span> <span class="pre">generate_fmu.mos</span></code>, which should result in a file
+<code class="docutils literal notranslate"><span class="pre">Tank.fmu</span></code>.</p>
+</section>
+<section id="controlling-the-watertank-from-smol">
+<h2>Controlling the Watertank from SMOL<a class="headerlink" href="#controlling-the-watertank-from-smol" title="Permalink to this heading">¶</a></h2>
+<p>SMOL can instantiate an FMU and control it.  Create a file <code class="docutils literal notranslate"><span class="pre">simple_tank.smol</span></code> with the following contents:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">main</span>
+<span class="linenos"> 2</span>    <span class="n">FMO</span><span class="p">[</span><span class="ow">in</span> <span class="n">Boolean</span> <span class="n">v</span><span class="p">,</span> <span class="n">out</span> <span class="n">Double</span> <span class="n">l</span><span class="p">]</span> <span class="n">de</span> <span class="o">=</span>
+<span class="linenos"> 3</span>      <span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;Tank.fmu&quot;</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+<span class="linenos"> 4</span>    <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+<span class="linenos"> 5</span>    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="n">do</span>
+<span class="linenos"> 6</span>        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="linenos"> 7</span>        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+<span class="linenos"> 8</span>    <span class="n">end</span>
+<span class="linenos"> 9</span>    <span class="n">de</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+<span class="linenos">10</span>    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="n">do</span>
+<span class="linenos">11</span>        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="linenos">12</span>        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+<span class="linenos">13</span>    <span class="n">end</span>
+<span class="linenos">14</span><span class="n">end</span>
+</pre></div>
+</div>
+<p>This SMOL program creates an instance of the tank FMU and instantiates its
+parameters and inputs (Lines 2-3), advances time until the water level in the
+tank decreases below 2 (Lines 5-8), then turns on the valve (Line 9) and
+advances time until the water level increases above 5 (Lines 10-13).</p>
 </section>
 </section>
 
@@ -193,6 +257,9 @@
                 <ul>
 <li><a class="reference internal" href="#">Modelling Physical Systems</a><ul>
 <li><a class="reference internal" href="#behavior-of-a-watertank">Behavior of a Watertank</a></li>
+<li><a class="reference internal" href="#the-watertank-in-modelica">The Watertank in Modelica</a></li>
+<li><a class="reference internal" href="#creating-an-fmu-for-the-watertank">Creating an FMU for the Watertank</a></li>
+<li><a class="reference internal" href="#controlling-the-watertank-from-smol">Controlling the Watertank from SMOL</a></li>
 </ul>
 </li>
 </ul>
@@ -223,7 +290,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

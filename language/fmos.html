@@ -10,11 +10,10 @@
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -145,6 +144,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
 </ul>
 
@@ -232,12 +232,12 @@ VarInits  <span class="o">::=</span> NAME &#39;=&#39; LITERAL (&#39;,&#39; VarIn
 The string parameter must be a path to an FMU with a model description for co-simulation.
 If the path is relative, then it must be relative to the directory where the SMOL runtime is run.</p>
 <p>The following shows how an FMO is loaded and passed as a parameter.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">FMO</span><span class="o">[</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">fmo</span><span class="p">)</span><span class="w"> </span><span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">C</span><span class="p">(</span><span class="n">FMO</span><span class="o">[</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">fmo</span><span class="p">)</span><span class="w"> </span><span class="n">end</span>
 
-<span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="n">cont</span><span class="p">);</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<span class="n">main</span>
+<span class="w">  </span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">C</span><span class="w"> </span><span class="n">c</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">C</span><span class="p">(</span><span class="n">cont</span><span class="p">);</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 </section>
@@ -255,13 +255,13 @@ These fields can be read and written and are not connected to the encapsulated F
 <p>The <code class="docutils literal notranslate"><span class="pre">doStep</span></code> statement advances the encapsulated FMU by <code class="docutils literal notranslate"><span class="pre">t</span></code> time units. It results
 in a call to <code class="docutils literal notranslate"><span class="pre">doStep</span></code> of the encapsulated FMU.</p>
 <p>The following shows how an FMO is loaded and manipulated.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">main</span><span class="w"></span>
-<span class="w">  </span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Example FMO&quot;</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">doStep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span><span class="w"></span>
-<span class="w">  </span><span class="n">Int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cont</span><span class="p">.</span><span class="na">i</span><span class="p">;</span><span class="w"></span>
-<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<span class="n">end</span><span class="w"></span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">main</span>
+<span class="w">  </span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">role</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;Example FMO&quot;</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">doStep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">);</span>
+<span class="w">  </span><span class="n">Int</span><span class="w"> </span><span class="n">v</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cont</span><span class="p">.</span><span class="na">i</span><span class="p">;</span>
+<span class="w">  </span><span class="n">cont</span><span class="p">.</span><span class="na">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">v</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 </section>
@@ -333,7 +333,7 @@ in a call to <code class="docutils literal notranslate"><span class="pre">doStep
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.3.0.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
