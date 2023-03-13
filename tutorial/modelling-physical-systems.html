@@ -4,16 +4,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modelling Physical Systems &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
     <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -143,6 +144,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -154,7 +156,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="modelling-physical-systems">
+  <div class="section" id="modelling-physical-systems">
 <h1>Modelling Physical Systems<a class="headerlink" href="#modelling-physical-systems" title="Permalink to this heading">¶</a></h1>
 <p>We will do the following:</p>
 <ul class="simple">
@@ -163,7 +165,7 @@
 <li><p>Write a simple SMOL program that loads the FMU;</p></li>
 <li><p>Simulate and control the system’s behavior over time</p></li>
 </ul>
-<section id="behavior-of-a-watertank">
+<div class="section" id="behavior-of-a-watertank">
 <h2>Behavior of a Watertank<a class="headerlink" href="#behavior-of-a-watertank" title="Permalink to this heading">¶</a></h2>
 <p>We will model a watertank with a pipe, such that turning on the pipe adds a
 constant amount of water per second to the current level of the tank.  The
@@ -179,8 +181,8 @@ the current water level of the tank.</p>
 <li><p><span class="math notranslate nohighlight">\(f\)</span>: rate of inflow</p></li>
 <li><p><span class="math notranslate nohighlight">\(v\)</span>: valve control (0: valve is closed, 1: valve is open)</p></li>
 </ul>
-</section>
-<section id="the-watertank-in-modelica">
+</div>
+<div class="section" id="the-watertank-in-modelica">
 <h2>The Watertank in Modelica<a class="headerlink" href="#the-watertank-in-modelica" title="Permalink to this heading">¶</a></h2>
 <p>The following Modelica model implements the watertank.  Note that we use a
 Boolean variable to model the valve status, and introduce a second equation
@@ -197,8 +199,8 @@ explicitly defining the current inflow from the valve.</p>
 <span class="kr">end</span> <span class="nc">Tank</span><span class="p">;</span>
 </pre></div>
 </div>
-</section>
-<section id="creating-an-fmu-for-the-watertank">
+</div>
+<div class="section" id="creating-an-fmu-for-the-watertank">
 <h2>Creating an FMU for the Watertank<a class="headerlink" href="#creating-an-fmu-for-the-watertank" title="Permalink to this heading">¶</a></h2>
 <p>OpenModelica can export Modelica models as FMUs.  This can be done by opening
 the model in the OMEdit application, or from the command line via the <code class="docutils literal notranslate"><span class="pre">omc</span></code>
@@ -214,32 +216,32 @@ following content:</p>
 </div>
 <p>Then, run the command <code class="docutils literal notranslate"><span class="pre">omc</span> <span class="pre">generate_fmu.mos</span></code>, which should result in a file
 <code class="docutils literal notranslate"><span class="pre">Tank.fmu</span></code>.</p>
-</section>
-<section id="controlling-the-watertank-from-smol">
+</div>
+<div class="section" id="controlling-the-watertank-from-smol">
 <h2>Controlling the Watertank from SMOL<a class="headerlink" href="#controlling-the-watertank-from-smol" title="Permalink to this heading">¶</a></h2>
 <p>SMOL can instantiate an FMU and control it.  Create a file <code class="docutils literal notranslate"><span class="pre">simple_tank.smol</span></code> with the following contents:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="linenos"> 1</span><span class="n">main</span>
-<span class="linenos"> 2</span>    <span class="n">FMO</span><span class="p">[</span><span class="ow">in</span> <span class="n">Boolean</span> <span class="n">v</span><span class="p">,</span> <span class="n">out</span> <span class="n">Double</span> <span class="n">l</span><span class="p">]</span> <span class="n">de</span> <span class="o">=</span>
-<span class="linenos"> 3</span>      <span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;Tank.fmu&quot;</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
-<span class="linenos"> 4</span>    <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
-<span class="linenos"> 5</span>    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="n">do</span>
-<span class="linenos"> 6</span>        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
-<span class="linenos"> 7</span>        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
-<span class="linenos"> 8</span>    <span class="n">end</span>
-<span class="linenos"> 9</span>    <span class="n">de</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
-<span class="linenos">10</span>    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="n">do</span>
-<span class="linenos">11</span>        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
-<span class="linenos">12</span>        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
-<span class="linenos">13</span>    <span class="n">end</span>
-<span class="linenos">14</span><span class="n">end</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">main</span>
+    <span class="n">FMO</span><span class="p">[</span><span class="ow">in</span> <span class="n">Boolean</span> <span class="n">v</span><span class="p">,</span> <span class="n">out</span> <span class="n">Double</span> <span class="n">l</span><span class="p">]</span> <span class="n">de</span> <span class="o">=</span>
+      <span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;Tank.fmu&quot;</span><span class="p">,</span> <span class="n">v</span> <span class="o">=</span> <span class="kc">False</span><span class="p">,</span> <span class="n">d</span> <span class="o">=</span> <span class="mf">0.5</span><span class="p">,</span> <span class="n">f</span> <span class="o">=</span> <span class="mf">1.0</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="n">do</span>
+        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+    <span class="n">end</span>
+    <span class="n">de</span><span class="o">.</span><span class="n">v</span> <span class="o">=</span> <span class="kc">True</span><span class="p">;</span>
+    <span class="k">while</span> <span class="n">de</span><span class="o">.</span><span class="n">l</span> <span class="o">&lt;</span> <span class="mi">5</span> <span class="n">do</span>
+        <span class="n">de</span><span class="o">.</span><span class="n">tick</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">de</span><span class="o">.</span><span class="n">l</span><span class="p">);</span>
+    <span class="n">end</span>
+<span class="n">end</span>
 </pre></div>
 </div>
 <p>This SMOL program creates an instance of the tank FMU and instantiates its
 parameters and inputs (Lines 2-3), advances time until the water level in the
 tank decreases below 2 (Lines 5-8), then turns on the valve (Line 9) and
 advances time until the water level increases above 5 (Lines 10-13).</p>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -290,7 +292,7 @@ advances time until the water level increases above 5 (Lines 10-13).</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

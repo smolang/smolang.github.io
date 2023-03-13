@@ -4,15 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lexical Structure &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -146,6 +147,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -157,11 +159,11 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="lexical-structure">
+  <div class="section" id="lexical-structure">
 <h1>Lexical Structure<a class="headerlink" href="#lexical-structure" title="Permalink to this heading">¶</a></h1>
 <p>This section describes the lexical structure of SMOL.  We define the grammar
 using a simple <a class="reference internal" href="../glossary.html#term-EBNF"><span class="xref std std-term">EBNF</span></a> notation as defined by <a class="reference external" href="https://www.w3.org/TR/2006/REC-xml11-20060816/#sec-notation">the W3C</a>.</p>
-<section id="line-terminators-and-whitespace">
+<div class="section" id="line-terminators-and-whitespace">
 <h2>Line Terminators and Whitespace<a class="headerlink" href="#line-terminators-and-whitespace" title="Permalink to this heading">¶</a></h2>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>Whitespace <span class="o">::=</span> #x20 | #x09 | #x0D | #x0A | #x0C
 EOL <span class="o">::=</span> #x0A | #x0C
@@ -170,6 +172,10 @@ EOL <span class="o">::=</span> #x0A | #x0C
 <p>The following characters count as whitespace:</p>
 <table class="docutils align-left" id="id1">
 <caption><span class="caption-text">Whitespace</span><a class="headerlink" href="#id1" title="Permalink to this table">¶</a></caption>
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
 <thead>
 <tr class="row-odd"><th class="head"><p>Code</p></th>
 <th class="head"><p>Name</p></th>
@@ -195,8 +201,8 @@ EOL <span class="o">::=</span> #x0A | #x0C
 </table>
 <p>Whitespace has no semantic meaning, with the exception of the Line Feed and
 Carriage Return characters which terminate a line comment.</p>
-</section>
-<section id="comments">
+</div>
+<div class="section" id="comments">
 <h2>Comments<a class="headerlink" href="#comments" title="Permalink to this heading">¶</a></h2>
 <p>Comments are syntax elements that are ignored during parsing.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>Comment <span class="o">::=</span> BlockComment | LineComment
@@ -206,8 +212,8 @@ LineComment <span class="o">::=</span> &#39;//&#39; .* EOL
 </div>
 <p>A block comment starts with <code class="docutils literal notranslate"><span class="pre">/*</span></code> and extends until the first occurrence of
 <code class="docutils literal notranslate"><span class="pre">*/</span></code>.  A line comment starts with <code class="docutils literal notranslate"><span class="pre">//</span></code> and extends until the end of the line.</p>
-</section>
-<section id="identifiers">
+</div>
+<div class="section" id="identifiers">
 <h2>Identifiers<a class="headerlink" href="#identifiers" title="Permalink to this heading">¶</a></h2>
 <p>Identifiers start with a letter or underscore followed by a sequence of
 letters, numbers and underscores.  A language keyword cannot be used as an
@@ -215,14 +221,14 @@ identifier.</p>
 <div class="highlight-BNF notranslate"><div class="highlight"><pre><span></span>Identifier <span class="o">::=</span> [a-zA-Z_] [a-zA-Z0-9_]*
 </pre></div>
 </div>
-</section>
-<section id="keywords">
+</div>
+<div class="section" id="keywords">
 <h2>Keywords<a class="headerlink" href="#keywords" title="Permalink to this heading">¶</a></h2>
 <p>Any word occurring in the grammar (e.g., <cite>class</cite>) is a keyword.  Keywords
 cannot be used as identifiers.</p>
 <p>TODO: list all language keywords here?</p>
-</section>
-<section id="literals">
+</div>
+<div class="section" id="literals">
 <span id="literals-ref"></span><h2>Literals<a class="headerlink" href="#literals" title="Permalink to this heading">¶</a></h2>
 <p>A literal is a textual representation of a value.  SMOL supports integer,
 Boolean, string and float literals.</p>
@@ -235,8 +241,8 @@ StringLiteral <span class="o">::=</span> &#39;&quot;&#39; (&#39;\&quot;&#39; | .
 <p>String literals are delimited with quotation mark (<code class="docutils literal notranslate"><span class="pre">&quot;</span></code>) characters;
 quotation marks in the middle of a string are escaped with a backslash (<code class="docutils literal notranslate"><span class="pre">\</span></code>)
 character.  Strings can contain linebreaks.</p>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -288,7 +294,7 @@ character.  Strings can contain linebreaks.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

@@ -4,15 +4,17 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Modelling Knowledge using Semantic Technologies &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script async="async" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -142,6 +144,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -153,15 +156,135 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="modelling-knowledge-using-semantic-technologies">
+  <div class="section" id="modelling-knowledge-using-semantic-technologies">
 <h1>Modelling Knowledge using Semantic Technologies<a class="headerlink" href="#modelling-knowledge-using-semantic-technologies" title="Permalink to this heading">¶</a></h1>
-</section>
+<div class="section" id="semantic-technologies">
+<h2>Semantic Technologies<a class="headerlink" href="#semantic-technologies" title="Permalink to this heading">¶</a></h2>
+<p>Knowledge can be described ad hoc or in a structural manner. Semantic Technologies facilitate the description of <strong>structured knowledge, consistency checking and reasoning</strong>.</p>
+<p>Some of this technologies which are also W3C standars are:</p>
+<ul class="simple">
+<li><p>For data: <strong>RDF</strong> (Resource Description Framework)</p></li>
+<li><p>For knowledge: <strong>OWL</strong> (Web Ontology Language)</p></li>
+<li><p>For queries: <strong>SPARQL</strong> (an RDF query language)</p></li>
+</ul>
+</div>
+<div class="section" id="rdf-resource-description-framework">
+<h2>RDF (Resource Description Framework)<a class="headerlink" href="#rdf-resource-description-framework" title="Permalink to this heading">¶</a></h2>
+<p>In the semantic technology context (and in particular in RDF), data is expressed by triples (facts), which consists of a <em>subject</em>, a <em>predicate</em> and an <em>object</em>.</p>
+<p>Example:</p>
+<div class="figure align-center">
+<img alt="RDF example" src="../_images/rdf-example.svg" /></div>
+<p>Alice (id 111) is a Person. She has a child named Bob (id 222) who is also a Person. Bob has a child named Charlie (id 333) who is also a Person.</p>
+<p>Here we see multiple facts, each of which is a triple. The subject is the entity that is being described (Alice id 111), the predicate is the property of the subject (having a child), and the object is the value of the property (Bob id 111).</p>
+</div>
+<div class="section" id="owl-web-ontology-language">
+<h2>OWL (Web Ontology Language)<a class="headerlink" href="#owl-web-ontology-language" title="Permalink to this heading">¶</a></h2>
+<p>It’s a <strong>knowledge representation</strong> language used to build ontologies.</p>
+<ul class="simple">
+<li><p>Ontologies are <strong>logics</strong> for <strong>knowledge representation</strong></p></li>
+</ul>
+<p>The following is a simple example of an ontology in OWL. Since it express knowledge in a formal way it can be represented also in logical form.</p>
+<div class="figure align-center">
+<img alt="OWL example" src="../_images/owl-example.svg" /></div>
+<div class="math notranslate nohighlight">
+\[\forall x \: \exists y \: \exists z \: | \: hasChild(x, y) \: \land \: hasChild(y, z) \: \land \: Person(z) \: \implies \: GrandParent(x)\]</div>
+<p><code class="docutils literal notranslate"><span class="pre">hasChild</span></code> <strong>some</strong> (<code class="docutils literal notranslate"><span class="pre">hasChild</span></code> <strong>some</strong> <code class="docutils literal notranslate"><span class="pre">Person</span></code>) <strong>subClassOf</strong> <code class="docutils literal notranslate"><span class="pre">GrandParent</span></code></p>
+<ul class="simple">
+<li><p>Ontologies represent knowledge that is incremented over time</p></li>
+</ul>
+</div>
+<div class="section" id="sparql-sparql-protocol-and-rdf-query-language">
+<h2>SPARQL (SPARQL Protocol and RDF Query Language)<a class="headerlink" href="#sparql-sparql-protocol-and-rdf-query-language" title="Permalink to this heading">¶</a></h2>
+<p><strong>SPARQL</strong> is a <strong>query</strong> language for databases stored in RDF format.</p>
+<div class="figure align-center">
+<img alt="OWL example" src="../_images/owl-example.svg" /></div>
+<div class="highlight-sparql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span> <span class="nv">?x</span> <span class="k">WHERE</span> <span class="p">{</span> <span class="nv">?x</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Person</span> <span class="p">}</span>
+<span class="k">SELECT</span> <span class="nv">?x</span> <span class="nv">?y</span> <span class="k">WHERE</span> <span class="p">{</span> <span class="nv">?x</span> <span class="k">a</span> <span class="p">:</span><span class="nt">Person</span><span class="p">.</span> <span class="nv">?x</span> <span class="p">:</span><span class="nt">hasChild</span> <span class="nv">?y</span> <span class="p">}</span>
+<span class="k">SELECT</span> <span class="nv">?x</span> <span class="k">WHERE</span> <span class="p">{</span> <span class="nv">?x</span> <span class="k">a</span> <span class="p">:</span><span class="nt">GrandParent</span> <span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="asset-modelling">
+<h2>Asset modelling<a class="headerlink" href="#asset-modelling" title="Permalink to this heading">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title"><strong>Asset model in the engineering domain</strong></p>
+<p>An asset model is an <strong>organized, digital description</strong> of the composition and properties of an <strong>asset</strong>.</p>
+</div>
+<ul class="simple">
+<li><p>In the engineering domain it is common practice to <strong>build asset models</strong> to support, e.g., maintenance, operations, design etc…</p></li>
+<li><p>There are currently several industry initiatives that endorse the use of <strong>ontologies</strong> for asset modelling, e.g., in the Industry 4.0</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title"><strong>Asset models &amp; digital twins</strong></p>
+<p>Assets models are any <strong>object of interest</strong> in a digital twin. They provide the twin with <strong>knowledge</strong> about the <strong>static structure</strong> that can be <strong>used for the twin’s simulation model</strong></p>
+</div>
+<p>The next example is the <strong>modelling of an house</strong> by exploiting semantic technologies illustrated before.
+We can create a <strong>representation</strong> of the house (in all his parts) by the means of <strong>RDF</strong> triples.
+In this way there is a <strong>formal</strong> representation of it that can be <strong>interpreted/understood</strong> by a computer in order to obtain meaningful information from it.</p>
+<div class="section" id="house-asset-use-case">
+<h3>House Asset Use Case<a class="headerlink" href="#house-asset-use-case" title="Permalink to this heading">¶</a></h3>
+<div class="figure align-center">
+<img alt="House Asset Use Case" src="../_images/house-asset-use-case.svg" /></div>
+<div class="line-block">
+<div class="line">Download the house asset model from: <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/examples/tutorialfiles.zip">https://github.com/smolang/SemanticObjects/blob/master/examples/tutorialfiles.zip</a></div>
+<div class="line">File: house.ttl</div>
+</div>
+<p>The architecture of the house expressed here:</p>
+<p>Is expressed in RDF format (Turtle syntax) as follows:</p>
+</div>
+</div>
+<div class="section" id="example-of-sparql-in-smol">
+<h2>Example of SPARQL in SMOL<a class="headerlink" href="#example-of-sparql-in-smol" title="Permalink to this heading">¶</a></h2>
+<p>The following is an example of the usage of SPARQL in SMOL code.</p>
+<p>It selects the ids of all the rooms represented in the house asset model and print them out.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>main
+    List&lt;Int&gt; results = access(
+        &quot;SELECT ?obj {
+            ?a a asset:Room.
+            ?a asset:id ?obj
+        }&quot;;
+    )
+    while results != null do
+        Int current = results.content;
+        results = results.next;
+        println(current);
+    end
+end
+</pre></div>
+</div>
+</div>
+</div>
 
 
             <div class="clearer"></div>
           </div>
         </div>
       </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Modelling Knowledge using Semantic Technologies</a><ul>
+<li><a class="reference internal" href="#semantic-technologies">Semantic Technologies</a></li>
+<li><a class="reference internal" href="#rdf-resource-description-framework">RDF (Resource Description Framework)</a></li>
+<li><a class="reference internal" href="#owl-web-ontology-language">OWL (Web Ontology Language)</a></li>
+<li><a class="reference internal" href="#sparql-sparql-protocol-and-rdf-query-language">SPARQL (SPARQL Protocol and RDF Query Language)</a></li>
+<li><a class="reference internal" href="#asset-modelling">Asset modelling</a><ul>
+<li><a class="reference internal" href="#house-asset-use-case">House Asset Use Case</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#example-of-sparql-in-smol">Example of SPARQL in SMOL</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
     
 
       <div class="clearer"></div>
@@ -186,7 +309,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

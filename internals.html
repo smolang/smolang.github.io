@@ -4,15 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Internals &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
-    <script src="_static/sphinx_highlight.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="_static/js/theme.js"></script>
     <script src="_static/js/petite-vue.js"></script>
@@ -136,6 +137,7 @@
 <li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -147,16 +149,16 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="internals">
+  <div class="section" id="internals">
 <h1>Internals<a class="headerlink" href="#internals" title="Permalink to this heading">¶</a></h1>
 <p>This page contains a sketch of the SMOL implementation internals.</p>
-<section id="parsing-and-typechecking-program-flow">
+<div class="section" id="parsing-and-typechecking-program-flow">
 <h2>Parsing and Typechecking Program Flow<a class="headerlink" href="#parsing-and-typechecking-program-flow" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>SMOL input files are parsed via antlr; the antlr grammar can be found in <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/antlr/While.g4">src/main/antlr/While.g4</a>.</p></li>
 <li><p>Parsing, typechecking and preparation to run a SMOL program are done by the method <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/REPL.kt">REPL.initInterpreter</a>, which calls methods according to Figure <a class="reference internal" href="#parsing-flow-ref"><span class="std std-ref">Parsing Flow</span></a>.</p></li>
 </ul>
-<figure class="align-default" id="id1">
+<div class="figure align-default" id="id1">
 <span id="parsing-flow-ref"></span><div class="mermaid">
             flowchart TB
     input([ `-i` argument or REPL `read` command])
@@ -179,17 +181,15 @@
     translate -- StaticTable --&gt;interpret
     translate -- StaticTable --&gt;typecheck
     end
-        </div><figcaption>
-<p><span class="caption-text">The program flow of smol program text inside <code class="docutils literal notranslate"><span class="pre">REPL.initInterpreter</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
-</figcaption>
-</figure>
-</section>
-<section id="statement-execution">
+        </div><p class="caption"><span class="caption-text">The program flow of smol program text inside <code class="docutils literal notranslate"><span class="pre">REPL.initInterpreter</span></code></span><a class="headerlink" href="#id1" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+<div class="section" id="statement-execution">
 <h2>Statement Execution<a class="headerlink" href="#statement-execution" title="Permalink to this heading">¶</a></h2>
 <p>Executing a smol program is controlled by the <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/REPL.kt">REPL</a> class.  An  <code class="docutils literal notranslate"><span class="pre">Interpreter</span></code> object keeps track of the execution state, which consists of a stack of <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=data%20class%20StackEntry">StackEntry</a> objects and a <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=typealias%20GlobalMemory">GlobalMemory</a> instance, which in turn maps object names to their <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/State.kt#:~:text=typealias%20Memory">Memory</a>.</p>
 <p>A single statement is executed by the method <a class="reference external" href="https://github.com/smolang/SemanticObjects/blob/master/src/main/kotlin/no/uio/microobject/runtime/Interpreter.kt#:~:text=fun%20makeStep">Interpreter.makeStep</a>.</p>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -238,7 +238,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

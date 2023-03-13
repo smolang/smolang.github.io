@@ -4,15 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Semantically Reflected Digital Twins &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -142,6 +143,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -153,15 +155,419 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="semantically-reflected-digital-twins">
+  <div class="section" id="semantically-reflected-digital-twins">
 <h1>Semantically Reflected Digital Twins<a class="headerlink" href="#semantically-reflected-digital-twins" title="Permalink to this heading">¶</a></h1>
-</section>
+<div class="section" id="self-adaptation">
+<h2>Self-Adaptation<a class="headerlink" href="#self-adaptation" title="Permalink to this heading">¶</a></h2>
+<p>Taking into consideration the architectures and ideas presented above we highlight that through them it is possible to:</p>
+<ul class="simple">
+<li><p><strong>Access the sensors</strong> of the physical system (FMI)</p></li>
+<li><p>Access the <strong>structure of the physical system</strong> (SWT), and</p></li>
+<li><p><strong>Simulate</strong> the digital design (FMI)</p></li>
+</ul>
+<p>In other words:</p>
+<ul class="simple">
+<li><p>We can <strong>compare simulations</strong> (DT) <strong>to data from sensors</strong> (PT)</p></li>
+<li><p>On <strong>changes</strong> of the PT perceived by sensors, the <strong>system adapts</strong> to reflect such changes in the simulation</p></li>
+</ul>
+<p>Self-adaptation means to <strong>automatically reestablish some property</strong> of a system, by <strong>reacting to outside stimuli</strong>. For Digital Twins, the “outside” is the physical system.</p>
+<p>There are two kinds of self-adaptation to reestablish the twinning property.</p>
+<div class="section" id="behavioral-self-adaptation">
+<h3>Behavioral self-adaptation<a class="headerlink" href="#behavioral-self-adaptation" title="Permalink to this heading">¶</a></h3>
+<p>It’s the case of a behavioral self-adaptation when the <strong>simulated</strong> (expected) <strong>behavior</strong> of certain components does <strong>not match</strong> the <strong>real</strong> (measured) <strong>behavior</strong> of the system, measured trough sensors.</p>
+<dl class="simple">
+<dt>This can be caused by multiple reasons, such as:</dt><dd><ul class="simple">
+<li><p>Sensor drift</p></li>
+<li><p>Modeling errors</p></li>
+<li><p>Faults</p></li>
+<li><p>Unexpected events</p></li>
+</ul>
+</dd>
+<dt>In order to solve this unintended behavior you can:</dt><dd><ul class="simple">
+<li><p>Monitor sensors</p></li>
+<li><p>Analyze the relation to simulation</p></li>
+<li><p>Plan repair by, e.g., finding new simulation parameters</p></li>
+<li><p>Exchange simulators or send signal to physical system</p></li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="structural-self-adaptation">
+<h3>Structural self-adaptation<a class="headerlink" href="#structural-self-adaptation" title="Permalink to this heading">¶</a></h3>
+<p>It’s the case of a structural self-adaptation when the <strong>simulated</strong> (represented by a knowledge graph) <strong>structure</strong> of the system does not match its <strong>real</strong> (expressed in the asset model) <strong>structure</strong>.</p>
+<p>In order to do this we need to <strong>express the program structure</strong> in a <strong>formal way</strong>, so we can <strong>uniformly access it</strong> together with the asset model. This could be done with the use of semantic web technologies. But how to apply them on programs?</p>
+<p>We can use <strong>semantical lifting</strong>, a mechanism to automatically generate the knowledge graph of a program state.</p>
+<p>To self adapt we must, first, <strong>detect</strong> the broken twinning and then <strong>repair</strong> it.</p>
+<ol class="arabic simple">
+<li><dl class="simple">
+<dt>We <strong>access</strong> PT structure through asset model</dt><dd><ul class="simple">
+<li><p>Changes of PT are visible in asset model</p></li>
+<li><p>Asset model accessible directly to DT</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>Detect</strong> changes through <strong>combined knowledge graph</strong> (PT + DT)</dt><dd><ul class="simple">
+<li><p>From the combination of PT and DT we can extract all the information needed to repair and perform the adaptation</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="mape-k">
+<h2>MAPE-K<a class="headerlink" href="#mape-k" title="Permalink to this heading">¶</a></h2>
+<div class="note admonition">
+<p class="admonition-title"><strong>MAPE-K</strong></p>
+<p>MAPE-K is an established conceptual framework to structure self-adaptive systems.</p>
+</div>
+<p>This framework expects a structure formed by a <strong>K</strong>nowledge component which keeps track of information and goals for the self-adaptation loop.</p>
+<p>In particular its tasks are to:</p>
+<ul class="simple">
+<li><p><strong>M</strong>onitor the situation of the system</p></li>
+<li><p><strong>A</strong>nalyze whether the situation requires adaptation (structure/behavior of digital and physical twins is different)</p></li>
+<li><p><strong>P</strong>lan the adaptation</p></li>
+<li><p><strong>E</strong>xecute the plan</p></li>
+</ul>
+</div>
+<div class="section" id="semantically-lifted-states">
+<h2>Semantically Lifted States<a class="headerlink" href="#semantically-lifted-states" title="Permalink to this heading">¶</a></h2>
+<p>A <strong>semantically lifted program</strong> can interpret its own program state as a <strong>knowledge graph</strong> and reflect on itself through it.</p>
+<p>A specific program state <code class="docutils literal notranslate"><span class="pre">conf</span></code> can be <strong>lifted</strong> to create a <strong>knowledge graph</strong> representing it.</p>
+<p>A change in the <strong>program state</strong> determines an <strong>equivalent change</strong> in the <strong>knowledge graph</strong>. In other words determines an update of the representation of the program state itself.</p>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
+<p>In this example we can see a SMOL program in which is created a class <code class="docutils literal notranslate"><span class="pre">C</span></code> composed by:</p>
+<ul class="simple">
+<li><p>An integer field <code class="docutils literal notranslate"><span class="pre">i</span></code></p></li>
+<li><p>A method <code class="docutils literal notranslate"><span class="pre">inc()</span></code> that increments <code class="docutils literal notranslate"><span class="pre">i</span></code> by 1</p></li>
+</ul>
+<p>A <code class="docutils literal notranslate"><span class="pre">main</span></code> in which:</p>
+<ul class="simple">
+<li><p>A new object named <code class="docutils literal notranslate"><span class="pre">c</span></code> of type <code class="docutils literal notranslate"><span class="pre">C</span></code> is created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">c.inc</span></code> is executed the variable named <code class="docutils literal notranslate"><span class="pre">i</span></code> is incremented</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">C</span> <span class="p">(</span><span class="n">Int</span> <span class="n">i</span><span class="p">)</span>
+    <span class="n">Unit</span> <span class="n">inc</span><span class="p">()</span> <span class="n">this</span><span class="o">.</span><span class="n">i</span> <span class="o">=</span> <span class="n">this</span><span class="o">.</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span> <span class="n">end</span>
+<span class="n">end</span>
+<span class="n">main</span>
+    <span class="n">C</span> <span class="n">c</span> <span class="o">=</span> <span class="n">new</span> <span class="n">C</span><span class="p">(</span><span class="mi">5</span><span class="p">);</span>
+    <span class="n">c</span><span class="o">.</span><span class="n">inc</span><span class="p">();</span>
+<span class="n">end</span>
+</pre></div>
+</div>
+<p>The program state can be <strong>formalised in RDF</strong> and expressed in the form of triples. Some examples could be:</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">C</span></code> is a class and has a field named <code class="docutils literal notranslate"><span class="pre">i</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">prog:C</span> <span class="pre">a</span> <span class="pre">prog:class</span> <span class="pre">.</span> <span class="pre">prog:C</span> <span class="pre">prog:hasField</span> <span class="pre">prog:C_i</span> <span class="pre">.</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">C</span></code> has a mehod named <code class="docutils literal notranslate"><span class="pre">inc</span></code></dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">prog:C</span> <span class="pre">prog:hasMethod</span> <span class="pre">prog:C_inc</span> <span class="pre">.</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">inc</span></code> has a Body <code class="docutils literal notranslate"><span class="pre">s</span></code> (and it could be described in more detail)</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">prog:inc</span> <span class="pre">prog:hasBody</span> <span class="pre">prog:s</span> <span class="pre">;</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">obj1</span></code> is an instance of <code class="docutils literal notranslate"><span class="pre">C</span></code> with <code class="docutils literal notranslate"><span class="pre">i</span></code> initialised to 5</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">run:obj1</span> <span class="pre">a</span> <span class="pre">prog:C</span> <span class="pre">.</span> <span class="pre">run:obj1</span> <span class="pre">prog:C_i</span> <span class="pre">5</span> <span class="pre">.</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>in a certain moment the stack top has a frame <code class="docutils literal notranslate"><span class="pre">frame1</span></code> which is the execution of the <code class="docutils literal notranslate"><span class="pre">inc</span></code> method</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">run:stack</span> <span class="pre">run:top</span> <span class="pre">run:frame1</span> <span class="pre">.</span> <span class="pre">run:frame1</span> <span class="pre">run:executes</span> <span class="pre">prog:inc.</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="smol">
+<h2>SMOL<a class="headerlink" href="#smol" title="Permalink to this heading">¶</a></h2>
+<p>Semantical lifting and reflection is implemented in the Semantic Micro
+Object Language, <a class="reference external" href="https://www.smolang.org.">smolang.org</a></p>
+<p>Given the <strong>lifted state</strong>, we can use it for multiple operations:</p>
+<ul class="simple">
+<li><p><strong>Access it</strong> to retrieve objects without traversing pointers</p></li>
+<li><p><strong>Enrich it</strong> with an ontology, perform logical reasoning and retrieve objects using a query using the vocabulary of the domain.</p></li>
+<li><p><strong>Combine it</strong> with another knowledge graph and access external data based on information from the current program state.</p></li>
+</ul>
+<p>SMOL also permits to <strong>query knowledge base</strong> by using SPARQL query language.
+In the following example the program retrieve a list of Overloaded servers from a knowledge base and use it to perform some operation. In other words it extracts some information from a set of RDF triples.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Server</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span> <span class="n">taskList</span><span class="p">)</span> <span class="o">...</span> <span class="n">end</span>
+    <span class="k">class</span> <span class="nc">Scheduler</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Platform</span><span class="o">&gt;</span> <span class="n">serverList</span><span class="p">)</span>
+        <span class="n">Unit</span> <span class="n">reschedule</span><span class="p">()</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Server</span><span class="o">&gt;</span> <span class="n">l</span> <span class="p">:</span><span class="o">=</span> <span class="n">access</span><span class="p">(</span><span class="s2">&quot;SELECT ?x WHERE {?x a :Overloaded}&quot;</span><span class="p">);</span>
+            <span class="n">this</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
+        <span class="n">end</span>
+    <span class="n">end</span>
+</pre></div>
+</div>
+<p>However we need a <strong>formal definition</strong> of what an Overloaded server is.
+This can be done again using Semantic Technologies to express that an Overloaded server is a Server which has at least 3 tasks in the <code class="docutils literal notranslate"><span class="pre">taskList</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">:</span><span class="n">Overloaded</span>
+    <span class="n">owl</span><span class="p">:</span><span class="n">equivalentClass</span> <span class="p">[</span>
+        <span class="n">owl</span><span class="p">:</span><span class="n">onProperty</span> <span class="p">(:</span><span class="n">taskList</span><span class="p">,</span> <span class="p">:</span><span class="n">length</span><span class="p">);</span>
+    <span class="n">owl</span><span class="p">:</span><span class="n">minValue</span> <span class="mi">3</span><span class="p">;</span>
+<span class="p">]</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo-semantic-reflection">
+<h2>DEMO - Semantic reflection<a class="headerlink" href="#demo-semantic-reflection" title="Permalink to this heading">¶</a></h2>
+<p>In this example we see how to:</p>
+<ul class="simple">
+<li><p>Monitor consistency</p></li>
+<li><p>Monitor twinning</p></li>
+<li><p>Adapt to addition of new rooms</p></li>
+</ul>
+<p>We will use the House assets use-case based on SMOL language.</p>
+<div class="figure align-center">
+<img alt="House Assets Use Case" src="../_images/house-asset-use-case_2.svg" /></div>
+<div class="section" id="model-description">
+<h3>Model Description<a class="headerlink" href="#model-description" title="Permalink to this heading">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;fmiModelDescription fmiVersion=&quot;2.0&quot; modelName=&quot;Example&quot; ...&gt;
+    &lt;CoSimulation needsExecutionTool=&quot;true&quot; .../&gt;
+    &lt;ModelVariables&gt;
+        &lt;ScalarVariable name=&quot;p&quot; variability=&quot;continuous&quot; cusality=&quot;parameter&quot;&gt;
+            &lt;Real start=&quot;0.0&quot; /&gt;
+        &lt;/ScalarVariable&gt;
+        &lt;ScalarVariable name=&quot;input&quot; variability=&quot;continuous&quot; causality=&quot;input&quot;&gt;
+            &lt;Real start=&quot;0.0&quot; /&gt;
+        &lt;/ScalarVariable&gt;
+        &lt;ScalarVariable name=&quot;val&quot; variability=&quot;continuous&quot; causality=&quot;output&quot; initial=&quot;calculated&quot;&gt;
+            &lt;Real/&gt;
+    &lt;/ModelVariables&gt;
+    &lt;ModelStructure&gt; ... &lt;/ModelStructure&gt;
+&lt;/fmiModelDescription&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="smol-and-fmi">
+<h2>SMOL and FMI<a class="headerlink" href="#smol-and-fmi" title="Permalink to this heading">¶</a></h2>
+<p>In SMOL the <strong>Functional Mock-Up Objects (FMOs)</strong> provide a tight integration of simulation units (FMU) using FMI into programs.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">shadow</span> <span class="o">=</span>
+        <span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;Sim.fmu&quot;</span><span class="p">,</span> <span class="nb">input</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">val</span><span class="p">,</span> <span class="n">p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">);</span>
+<span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">sys</span> <span class="o">=</span> <span class="n">simulate</span><span class="p">(</span><span class="s2">&quot;Realsys.fmu&quot;</span><span class="p">);</span>
+<span class="n">Monitor</span> <span class="n">m</span> <span class="o">=</span> <span class="n">new</span> <span class="n">Monitor</span><span class="p">(</span><span class="n">sys</span><span class="p">,</span><span class="n">shadow</span><span class="p">);</span> <span class="n">m</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>In this example <code class="docutils literal notranslate"><span class="pre">shadow</span></code> and <code class="docutils literal notranslate"><span class="pre">sys</span></code> are FMOs (Cont). These allow to <strong>map the FMU to a SMOL Object</strong> allowing also to interact with the FMU itself. See <a class="reference external" href="https://smolang.org/language/fmos.html.">smolang documentation about FMOs</a>  for more details.</p>
+<p><strong>Integration of FMOs in SMOL</strong></p>
+<ul class="simple">
+<li><p>The type of FMO is directly checked against model description</p></li>
+<li><p>Variables of FMU become fields, functions become methods</p></li>
+<li><p>Causality reflected in type</p></li>
+</ul>
+<p><strong>Functional Mock-Up Interface (FMI)</strong> is a standard for (co-)simulation units, called function mock-up units (FMUs). Can also serve as interface to sensors and actuators.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span><span class="n">simplified</span> <span class="n">shadow</span>
+<span class="k">class</span> <span class="nc">Monitor</span><span class="p">(</span><span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">sys</span><span class="p">,</span>
+        <span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">shadow</span><span class="p">)</span>
+        <span class="n">Unit</span> <span class="n">run</span><span class="p">(</span><span class="n">Double</span> <span class="n">threshold</span><span class="p">)</span>
+        <span class="k">while</span> <span class="n">shadow</span> <span class="o">!=</span> <span class="n">null</span> <span class="n">do</span>
+                <span class="n">sys</span><span class="o">.</span><span class="n">doStep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span> <span class="n">shadow</span><span class="o">.</span><span class="n">doStep</span><span class="p">(</span><span class="mf">1.0</span><span class="p">);</span>
+                <span class="k">if</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">val</span> <span class="o">-</span> <span class="n">shadow</span><span class="o">.</span><span class="n">val</span> <span class="o">&gt;=</span> <span class="n">threshold</span><span class="p">)</span> <span class="n">then</span> <span class="o">...</span> <span class="n">end</span>
+        <span class="n">end</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p>This SMOL example shows a system <code class="docutils literal notranslate"><span class="pre">sys</span></code>, which is twinned by another FMO <code class="docutils literal notranslate"><span class="pre">shadow</span></code>.
+When the difference between the two objects (sys.val - shadow.val) exceeds a threshold some events are triggered (e.g. Self adaptation).</p>
+<p><strong>FMOs are objects</strong>, so they are <strong>part of the knoledge graph</strong> once the program state is <strong>lifted</strong>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Monitor</span><span class="p">(</span><span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">sys</span><span class="p">,</span>
+                <span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">shadow</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This class Monitor takes two FMOs as parameters. The first one is the system to be monitored <code class="docutils literal notranslate"><span class="pre">sys</span></code> and the second one is its shadow <code class="docutils literal notranslate"><span class="pre">shadow</span></code>.
+The result of the <strong>semantical lifting</strong> of this program is the following.</p>
+</div>
+<div class="section" id="using-the-semantical-lifting">
+<h2>Using the Semantical Lifting<a class="headerlink" href="#using-the-semantical-lifting" title="Permalink to this heading">¶</a></h2>
+<p>We can use <strong>SPARQL</strong> to <strong>query</strong> the program state and the knowledge base, thus <strong>checking if domain constraints are met</strong>.</p>
+<p>Taking the house assets example into consideration we could:</p>
+<ul class="simple">
+<li><p><strong>Query</strong> the program state to check if the <strong>house setup is consistent</strong> (e.g. there should be no rooms that are both left and right of a controller)</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT ?x WHERE {
+    ?ctrl a prog:Controller.
+    ?ctrl prog:Controller_left ?room.
+    ?ctrl prog:Controller_right ?room
+}
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><strong>Query</strong> to check <strong>structural consistency</strong> for heaters:</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>SELECT ?x WHERE {
+    ?o1 prog:Room_id ?id1. ?h1 asset:id ?id1.
+    ?o2 prog:Room_id ?id2. ?h2 asset:id ?id2.
+    ?h1 htLeftOf ?h2.
+    ?c a prog:Controller.
+    ?c prog:Controller_left ?o1.
+    ?c prog:Controller_right ?o2
+}
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo-inconsistent-twinning">
+<h2>Demo - Inconsistent twinning<a class="headerlink" href="#demo-inconsistent-twinning" title="Permalink to this heading">¶</a></h2>
+<p><strong>Detecting Structural Drift</strong></p>
+<p>The two previous <strong>SPARQL</strong> queries can detect that some <strong>mismatch</strong> between asset model and program state exists. How to detect <strong>where</strong> the mismatch is and how to <strong>repair</strong> it?</p>
+<p>Solution: MAPE-K loop</p>
+<ul class="simple">
+<li><p>Retrieve all assets, and their connections by id (<strong>Monitor</strong>)</p></li>
+<li><p>Remove all ids present in the digital twin</p></li>
+<li><p>If any id is left, assets needs to be twinned (<strong>Analyze</strong>)</p></li>
+<li><p>Find kind of defect to plan repair (<strong>Plan</strong>)</p></li>
+<li><p>Execute repair according to connections (<strong>Execute</strong>)</p></li>
+<li><p>Monitor connections using previous query</p></li>
+<li><p>(And v.v. to detect twins that must be removed)</p></li>
+</ul>
+</div>
+<div class="section" id="example-adding-a-new-room">
+<h2>Example: Adding a New Room<a class="headerlink" href="#example-adding-a-new-room" title="Permalink to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Get all (asset) rooms and their neighboring walls</p></li>
+<li><p>Remove all (twinned) rooms with the same id</p></li>
+<li><p>Use the information obtained from the query to check if there are rooms in the asset model not represented in the twin model (so we can add them)</p></li>
+<li><p>Assumption: at least one new room is next to an existing one</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>class RoomAsrt(String room, String wallLt, String wallRt) end
+...
+List&lt;RoomAsrt&gt; newRooms =
+    construct(&quot; SELECT ?room ?wallLt ?wallRt WHERE
+    { ?x a asset:Room;
+        asset:right [asset:Wall_id ?wallRt];
+        asset:left [asset:Wall_id ?wallLt];
+        asset:Room_id ?room.
+        FILTER NOT EXISTS {?y a prog:Room; prog:Room_id ?room.} }&quot;);
+</pre></div>
+</div>
+</div>
+<div class="section" id="demo-repair">
+<h2>Demo - Repair<a class="headerlink" href="#demo-repair" title="Permalink to this heading">¶</a></h2>
+<p><strong>Assumptions</strong></p>
+<ul class="simple">
+<li><p>We know all the <strong>possible modifications up-front</strong> E.g., how to deal with a heater getting new features?</p></li>
+<li><p>We know how to always <strong>correct structural drift</strong></p></li>
+<li><p>Changes <strong>do not happen faster</strong> than we can repair</p></li>
+</ul>
+<p>Monitoring is still needed to (a) <strong>ensure</strong> that repairs work correctly, and (b) <strong>detect loss</strong> of twinning due to, e.g., unexpected structural drift.</p>
+</div>
+<div class="section" id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
+<p><strong>Digital Twins and the FMI</strong></p>
+<p>Digital twins are computer simulations of a physical system. They are used to monitor and control the physical system. Its functioning is based on an interconnection between physical assets and digital models.</p>
+<p><strong>Semantic Lifting and Asset Models</strong></p>
+<p>Semantic lifting allows to represent the program state as a <strong>knowledge graph.</strong> The asset model can then be <strong>combined</strong> with the program state to query <strong>verify</strong> certain properties.</p>
+<p><strong>Structural Self-Adaptation</strong></p>
+<p>It’s based on th use of semantic technologies to <strong>query</strong> and <strong>monitor</strong> combined knowledge graph from asset model and program state. This allows to <strong>detect</strong> structural drift and <strong>repair</strong> it.</p>
+<p>What have we used to construct a self-adaptive, semantically reflected Digital Twin?</p>
+<p><strong>Technologies</strong></p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>Semantic Web technologies</dt><dd><ul>
+<li><p>OWL/Protege</p></li>
+<li><p>RDF, SPARQL</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>Physical modeling, interfacing</dt><dd><ul>
+<li><p>Modelica, FMI</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>SMOL</p></li>
+</ul>
+<p><strong>Main concepts we explored</strong></p>
+<ul class="simple">
+<li><p>Digital Twins</p></li>
+<li><p>Self-Adaptation through MAPE-K loop</p></li>
+<li><p>Semantically lifted programs</p></li>
+<li><p>Asset models</p></li>
+</ul>
+</div>
+<div class="section" id="current-research-questions">
+<h2>Current Research Questions<a class="headerlink" href="#current-research-questions" title="Permalink to this heading">¶</a></h2>
+<p><strong>Digital Twins and Formal Methods</strong></p>
+<ul class="simple">
+<li><p>How to use the fully formal setting for static analysis?</p></li>
+<li><p>How to generate digital twins automatically?</p></li>
+<li><p>How to deal with concurrency?</p></li>
+</ul>
+<p><strong>Digital Twins&#64;UiO</strong></p>
+<p>If you are interested in semantic technologies for programs or digital twins, contact us under</p>
+<ul class="simple">
+<li><p><a class="reference external" href="mailto:einarj&#37;&#52;&#48;ifi&#46;uio&#46;no">einarj<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
+<li><p><a class="reference external" href="mailto:sltarifa&#37;&#52;&#48;ifi&#46;uio&#46;no">sltarifa<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
+<li><p><a class="reference external" href="mailto:rudi&#37;&#52;&#48;ifi&#46;uio&#46;no">rudi<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
+<li><p><a class="reference external" href="mailto:eduard&#37;&#52;&#48;ifi&#46;uio&#46;no">eduard<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
+</ul>
+</div>
+</div>
 
 
             <div class="clearer"></div>
           </div>
         </div>
       </div>
+    
+        <div id="show_right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon"><</span><span>Page contents<span></a></p>
+        </div>
+
+        <div id="right_sidebar">
+            <p><a class="toggle_right_sidebar" href="#"><span class="icon">></span><span>Page contents:<span></a></p>
+            <div class="page_toc">
+                <ul>
+<li><a class="reference internal" href="#">Semantically Reflected Digital Twins</a><ul>
+<li><a class="reference internal" href="#self-adaptation">Self-Adaptation</a><ul>
+<li><a class="reference internal" href="#behavioral-self-adaptation">Behavioral self-adaptation</a></li>
+<li><a class="reference internal" href="#structural-self-adaptation">Structural self-adaptation</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#mape-k">MAPE-K</a></li>
+<li><a class="reference internal" href="#semantically-lifted-states">Semantically Lifted States</a><ul>
+<li><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smol">SMOL</a></li>
+<li><a class="reference internal" href="#demo-semantic-reflection">DEMO - Semantic reflection</a><ul>
+<li><a class="reference internal" href="#model-description">Model Description</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#smol-and-fmi">SMOL and FMI</a></li>
+<li><a class="reference internal" href="#using-the-semantical-lifting">Using the Semantical Lifting</a></li>
+<li><a class="reference internal" href="#demo-inconsistent-twinning">Demo - Inconsistent twinning</a></li>
+<li><a class="reference internal" href="#example-adding-a-new-room">Example: Adding a New Room</a></li>
+<li><a class="reference internal" href="#demo-repair">Demo - Repair</a></li>
+<li><a class="reference internal" href="#summary">Summary</a></li>
+<li><a class="reference internal" href="#current-research-questions">Current Research Questions</a></li>
+</ul>
+</li>
+</ul>
+
+            </div>
+        </div>
     
 
       <div class="clearer"></div>
@@ -186,7 +592,7 @@
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

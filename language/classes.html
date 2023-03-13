@@ -4,15 +4,16 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Classes &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="../_static/sphinx_highlight.js"></script>
-    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -146,6 +147,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../internals.html">Internals</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../publications.html">Publications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lab.html">Digital Twin Lab</a></li>
 </ul>
 
         </div>
@@ -157,14 +159,14 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <section id="classes">
+  <div class="section" id="classes">
 <h1>Classes<a class="headerlink" href="#classes" title="Permalink to this heading">¶</a></h1>
 <p>All code to be executed in SMOL, with the exception of the main block, is
 contained in classes.  Classes define fields and methods.  Classes are
 instantiated in objects via the <code class="docutils literal notranslate"><span class="pre">new</span></code> expression, all objects of a class
 share the same methods and fields.  Each object’s fields hold different state
 that can change over time.</p>
-<section id="class-declarations">
+<div class="section" id="class-declarations">
 <span id="class-declaration-ref"></span><h2>Class Declarations<a class="headerlink" href="#class-declarations" title="Permalink to this heading">¶</a></h2>
 <p>A class can have generic type parameters, field declarations, methods and a modelling bridge.
 Additionally a class may be abstract and contain abstract methods. An abstract class may containt non-abstract methods.</p>
@@ -205,8 +207,8 @@ AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#3
                      Type Identifier &#39;(&#39; (Type Identifier (&#39;,&#39; Type Identifier)* )? &#39;)&#39;
 </pre></div>
 </div>
-</section>
-</section>
+</div>
+</div>
 
 
             <div class="clearer"></div>
@@ -254,7 +256,7 @@ AbstractMethod <span class="o">::=</span> &#39;abstract&#39; &#39;rule&#39;? &#3
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
