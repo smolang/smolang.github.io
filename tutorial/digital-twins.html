@@ -4,16 +4,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Digital Twins Introduction: Concepts and Engineering Perspectives &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -155,7 +154,7 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="digital-twins-introduction-concepts-and-engineering-perspectives">
+  <section id="digital-twins-introduction-concepts-and-engineering-perspectives">
 <h1>Digital Twins Introduction: Concepts and Engineering Perspectives<a class="headerlink" href="#digital-twins-introduction-concepts-and-engineering-perspectives" title="Permalink to this heading">¶</a></h1>
 <p>Digital twins are an emerging, enabling technology for industry to transition to
 the next level of digitisation.</p>
@@ -163,7 +162,7 @@ the next level of digitisation.</p>
 society at large.</p>
 <p>They were originally conceived at NASA for the space program, they have emerged
 as an engineering discipline, based on best practices.</p>
-<div class="section" id="what-is-a-digital-twin">
+<section id="what-is-a-digital-twin">
 <h2>What is a digital twin<a class="headerlink" href="#what-is-a-digital-twin" title="Permalink to this heading">¶</a></h2>
 <div class="note admonition">
 <p class="admonition-title">NASA’s definition of a DT</p>
@@ -178,8 +177,8 @@ DT is <strong>connected to PT in near real-time</strong> via data-streams (e.g. 
 DT takes information from the PT, uses them to do observations and take
 decisions/actions to be performed on the PT.</p>
 <p>A Digital Twin integrates aspects of models and control systems.</p>
-</div>
-<div class="section" id="lifecycle-management">
+</section>
+<section id="lifecycle-management">
 <h2>Lifecycle Management<a class="headerlink" href="#lifecycle-management" title="Permalink to this heading">¶</a></h2>
 <p>Digital Thread: The digital twin is meant to <strong>adapt</strong>, as the underlying assets evolve with time. It <strong>evolves in tandem</strong> with the asset.</p>
 <p>This allows to:</p>
@@ -200,11 +199,11 @@ decisions/actions to be performed on the PT.</p>
 <li><p>Changes in the assets trigger <strong>model evolutions</strong>.</p></li>
 <li><p><strong>CPS in-the-large</strong>: distributed, heterogeneous</p></li>
 </ul>
-</div>
-<div class="section" id="conceptual-layers-of-a-digital-twin">
+</section>
+<section id="conceptual-layers-of-a-digital-twin">
 <h2>Conceptual Layers of a Digital Twin<a class="headerlink" href="#conceptual-layers-of-a-digital-twin" title="Permalink to this heading">¶</a></h2>
-<div class="figure align-center">
-<img alt="Conceptual Layers" src="../_images/conceptual-layers.svg" /></div>
+<figure class="align-center">
+<img alt="Conceptual Layers" src="../_images/conceptual-layers.svg" /></figure>
 <p>There are four conceptual layers that constituite a Digital Twin:</p>
 <ul class="simple">
 <li><p><strong>Descriptive:</strong> Insight into the past (“what happened?” scenarios)</p></li>
@@ -212,10 +211,10 @@ decisions/actions to be performed on the PT.</p>
 <li><p><strong>Prescriptive:</strong> Advise on possible outcomes (“what if?” scenarios)</p></li>
 <li><p><strong>Reactive:</strong> Automated decision making</p></li>
 </ul>
-</div>
-<div class="section" id="digital-twins-and-formal-methods">
+</section>
+<section id="digital-twins-and-formal-methods">
 <h2>Digital Twins and Formal Methods<a class="headerlink" href="#digital-twins-and-formal-methods" title="Permalink to this heading">¶</a></h2>
-<div class="section" id="role-of-formal-methods-in-dt">
+<section id="role-of-formal-methods-in-dt">
 <h3>Role of Formal Methods in DT<a class="headerlink" href="#role-of-formal-methods-in-dt" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>Conceptual clearness, semantics, compositionality</p></li>
@@ -223,17 +222,17 @@ decisions/actions to be performed on the PT.</p>
 <li><p>Better <em>tool support</em></p></li>
 <li><p>Beyond simulation: evaluate or predict worst-cases, what-if scenarios, etc…</p></li>
 </ul>
-</div>
-<div class="section" id="role-of-knowledge-representation-in-dt">
+</section>
+<section id="role-of-knowledge-representation-in-dt">
 <h3>Role of Knowledge Representation in DT<a class="headerlink" href="#role-of-knowledge-representation-in-dt" title="Permalink to this heading">¶</a></h3>
 <ul class="simple">
 <li><p>A DT can be seen as composed by a Structural Twin which uniformly <strong>represent knowledge</strong> about PT and DT</p></li>
 <li><p><strong>Reasoning support</strong> that can exploit this knowledge</p></li>
 <li><p>Allows <strong>correctness properties</strong> to be expressed as <strong>relations</strong> between PT and DT</p></li>
 </ul>
-</div>
-</div>
-<div class="section" id="the-semantically-reflected-digital-twin">
+</section>
+</section>
+<section id="the-semantically-reflected-digital-twin">
 <h2>The Semantically Reflected Digital Twin<a class="headerlink" href="#the-semantically-reflected-digital-twin" title="Permalink to this heading">¶</a></h2>
 <p>Now we see an example of a digital twin architecture
 description using formal methods based on three technologies
@@ -242,7 +241,7 @@ This is based on the use of the following tools:</p>
 <p><strong>SWT</strong>: Semantic Web Technologies for uniform <strong>knowledge representation</strong> and <strong>integration</strong> of domain knowledge (discussed later).</p>
 <p><strong>FMI</strong>: The Functional Mock-Up Interface <strong>standard for interfaces between PT and DT</strong>, as well as simulations (discussed later).</p>
 <p><strong>SMOL</strong>: <strong>Semantic Reflection</strong> to reason about PT and DT through the integration of SWT and FMI into a programming language (discussed later). The system is implemented in <strong>SMOL</strong>, a unique language designed specifically for integration of SWT and programming.</p>
-<div class="section" id="example-house-heating">
+<section id="example-house-heating">
 <h3>Example: House heating<a class="headerlink" href="#example-house-heating" title="Permalink to this heading">¶</a></h3>
 <p>An example for a digital twin architecture can be made for an house with a heating system.</p>
 <p>A DT can be divided into:</p>
@@ -277,9 +276,9 @@ This is based on the use of the following tools:</p>
 </dl>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="tool-installation">
+</section>
+</section>
+<section id="tool-installation">
 <h2>Tool Installation<a class="headerlink" href="#tool-installation" title="Permalink to this heading">¶</a></h2>
 <p>Here is a list of the softwares and assets that will be used in this tutorial.</p>
 <ul class="simple">
@@ -292,8 +291,8 @@ This is based on the use of the following tools:</p>
 <li><p>Run docker pull ghcr.io/smolang/smol:latest</p></li>
 <li><p>Run docker pull openmodelica/openmodelica:v1.19.2-minimal</p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -353,7 +352,7 @@ This is based on the use of the following tools:</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

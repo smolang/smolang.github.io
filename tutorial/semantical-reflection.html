@@ -4,16 +4,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Semantically Reflected Digital Twins &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -155,9 +154,9 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="semantically-reflected-digital-twins">
+  <section id="semantically-reflected-digital-twins">
 <h1>Semantically Reflected Digital Twins<a class="headerlink" href="#semantically-reflected-digital-twins" title="Permalink to this heading">¶</a></h1>
-<div class="section" id="self-adaptation">
+<section id="self-adaptation">
 <h2>Self-Adaptation<a class="headerlink" href="#self-adaptation" title="Permalink to this heading">¶</a></h2>
 <p>Taking into consideration the architectures and ideas presented above we highlight that through them it is possible to:</p>
 <ul class="simple">
@@ -172,7 +171,7 @@
 </ul>
 <p>Self-adaptation means to <strong>automatically reestablish some property</strong> of a system, by <strong>reacting to outside stimuli</strong>. For Digital Twins, the “outside” is the physical system.</p>
 <p>There are two kinds of self-adaptation to reestablish the twinning property.</p>
-<div class="section" id="behavioral-self-adaptation">
+<section id="behavioral-self-adaptation">
 <h3>Behavioral self-adaptation<a class="headerlink" href="#behavioral-self-adaptation" title="Permalink to this heading">¶</a></h3>
 <p>It’s the case of a behavioral self-adaptation when the <strong>simulated</strong> (expected) <strong>behavior</strong> of certain components does <strong>not match</strong> the <strong>real</strong> (measured) <strong>behavior</strong> of the system, measured trough sensors.</p>
 <dl class="simple">
@@ -191,8 +190,8 @@
 </ul>
 </dd>
 </dl>
-</div>
-<div class="section" id="structural-self-adaptation">
+</section>
+<section id="structural-self-adaptation">
 <h3>Structural self-adaptation<a class="headerlink" href="#structural-self-adaptation" title="Permalink to this heading">¶</a></h3>
 <p>It’s the case of a structural self-adaptation when the <strong>simulated</strong> (represented by a knowledge graph) <strong>structure</strong> of the system does not match its <strong>real</strong> (expressed in the asset model) <strong>structure</strong>.</p>
 <p>In order to do this we need to <strong>express the program structure</strong> in a <strong>formal way</strong>, so we can <strong>uniformly access it</strong> together with the asset model. This could be done with the use of semantic web technologies. But how to apply them on programs?</p>
@@ -215,9 +214,9 @@
 </dl>
 </li>
 </ol>
-</div>
-</div>
-<div class="section" id="mape-k">
+</section>
+</section>
+<section id="mape-k">
 <h2>MAPE-K<a class="headerlink" href="#mape-k" title="Permalink to this heading">¶</a></h2>
 <div class="note admonition">
 <p class="admonition-title"><strong>MAPE-K</strong></p>
@@ -231,13 +230,13 @@
 <li><p><strong>P</strong>lan the adaptation</p></li>
 <li><p><strong>E</strong>xecute the plan</p></li>
 </ul>
-</div>
-<div class="section" id="semantically-lifted-states">
+</section>
+<section id="semantically-lifted-states">
 <h2>Semantically Lifted States<a class="headerlink" href="#semantically-lifted-states" title="Permalink to this heading">¶</a></h2>
 <p>A <strong>semantically lifted program</strong> can interpret its own program state as a <strong>knowledge graph</strong> and reflect on itself through it.</p>
 <p>A specific program state <code class="docutils literal notranslate"><span class="pre">conf</span></code> can be <strong>lifted</strong> to create a <strong>knowledge graph</strong> representing it.</p>
 <p>A change in the <strong>program state</strong> determines an <strong>equivalent change</strong> in the <strong>knowledge graph</strong>. In other words determines an update of the representation of the program state itself.</p>
-<div class="section" id="example">
+<section id="example">
 <h3>Example<a class="headerlink" href="#example" title="Permalink to this heading">¶</a></h3>
 <p>In this example we can see a SMOL program in which is created a class <code class="docutils literal notranslate"><span class="pre">C</span></code> composed by:</p>
 <ul class="simple">
@@ -296,9 +295,9 @@
 </dl>
 </li>
 </ul>
-</div>
-</div>
-<div class="section" id="smol">
+</section>
+</section>
+<section id="smol">
 <h2>SMOL<a class="headerlink" href="#smol" title="Permalink to this heading">¶</a></h2>
 <p>Semantical lifting and reflection is implemented in the Semantic Micro
 Object Language, <a class="reference external" href="https://www.smolang.org.">smolang.org</a></p>
@@ -313,7 +312,7 @@ In the following example the program retrieve a list of Overloaded servers from 
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Server</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Task</span><span class="o">&gt;</span> <span class="n">taskList</span><span class="p">)</span> <span class="o">...</span> <span class="n">end</span>
     <span class="k">class</span> <span class="nc">Scheduler</span><span class="p">(</span><span class="n">List</span><span class="o">&lt;</span><span class="n">Platform</span><span class="o">&gt;</span> <span class="n">serverList</span><span class="p">)</span>
         <span class="n">Unit</span> <span class="n">reschedule</span><span class="p">()</span>
-            <span class="n">List</span><span class="o">&lt;</span><span class="n">Server</span><span class="o">&gt;</span> <span class="n">l</span> <span class="p">:</span><span class="o">=</span> <span class="n">access</span><span class="p">(</span><span class="s2">&quot;SELECT ?x WHERE {?x a :Overloaded}&quot;</span><span class="p">);</span>
+            <span class="n">List</span><span class="o">&lt;</span><span class="n">Server</span><span class="o">&gt;</span> <span class="n">l</span> <span class="o">:=</span> <span class="n">access</span><span class="p">(</span><span class="s2">&quot;SELECT ?x WHERE {?x a :Overloaded}&quot;</span><span class="p">);</span>
             <span class="n">this</span><span class="o">.</span><span class="n">adapt</span><span class="p">(</span><span class="n">l</span><span class="p">);</span>
         <span class="n">end</span>
     <span class="n">end</span>
@@ -328,8 +327,8 @@ This can be done again using Semantic Technologies to express that an Overloaded
 <span class="p">]</span><span class="o">.</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="demo-semantic-reflection">
+</section>
+<section id="demo-semantic-reflection">
 <h2>DEMO - Semantic reflection<a class="headerlink" href="#demo-semantic-reflection" title="Permalink to this heading">¶</a></h2>
 <p>In this example we see how to:</p>
 <ul class="simple">
@@ -338,9 +337,9 @@ This can be done again using Semantic Technologies to express that an Overloaded
 <li><p>Adapt to addition of new rooms</p></li>
 </ul>
 <p>We will use the House assets use-case based on SMOL language.</p>
-<div class="figure align-center">
-<img alt="House Assets Use Case" src="../_images/house-asset-use-case_2.svg" /></div>
-<div class="section" id="model-description">
+<figure class="align-center">
+<img alt="House Assets Use Case" src="../_images/house-asset-use-case_2.svg" /></figure>
+<section id="model-description">
 <h3>Model Description<a class="headerlink" href="#model-description" title="Permalink to this heading">¶</a></h3>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>&lt;fmiModelDescription fmiVersion=&quot;2.0&quot; modelName=&quot;Example&quot; ...&gt;
     &lt;CoSimulation needsExecutionTool=&quot;true&quot; .../&gt;
@@ -358,9 +357,9 @@ This can be done again using Semantic Technologies to express that an Overloaded
 &lt;/fmiModelDescription&gt;
 </pre></div>
 </div>
-</div>
-</div>
-<div class="section" id="smol-and-fmi">
+</section>
+</section>
+<section id="smol-and-fmi">
 <h2>SMOL and FMI<a class="headerlink" href="#smol-and-fmi" title="Permalink to this heading">¶</a></h2>
 <p>In SMOL the <strong>Functional Mock-Up Objects (FMOs)</strong> provide a tight integration of simulation units (FMU) using FMI into programs.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Cont</span><span class="p">[</span><span class="n">out</span> <span class="n">Double</span> <span class="n">val</span><span class="p">]</span> <span class="n">shadow</span> <span class="o">=</span>
@@ -396,8 +395,8 @@ When the difference between the two objects (sys.val - shadow.val) exceeds a thr
 </div>
 <p>This class Monitor takes two FMOs as parameters. The first one is the system to be monitored <code class="docutils literal notranslate"><span class="pre">sys</span></code> and the second one is its shadow <code class="docutils literal notranslate"><span class="pre">shadow</span></code>.
 The result of the <strong>semantical lifting</strong> of this program is the following.</p>
-</div>
-<div class="section" id="using-the-semantical-lifting">
+</section>
+<section id="using-the-semantical-lifting">
 <h2>Using the Semantical Lifting<a class="headerlink" href="#using-the-semantical-lifting" title="Permalink to this heading">¶</a></h2>
 <p>We can use <strong>SPARQL</strong> to <strong>query</strong> the program state and the knowledge base, thus <strong>checking if domain constraints are met</strong>.</p>
 <p>Taking the house assets example into consideration we could:</p>
@@ -424,8 +423,8 @@ The result of the <strong>semantical lifting</strong> of this program is the fol
 }
 </pre></div>
 </div>
-</div>
-<div class="section" id="demo-inconsistent-twinning">
+</section>
+<section id="demo-inconsistent-twinning">
 <h2>Demo - Inconsistent twinning<a class="headerlink" href="#demo-inconsistent-twinning" title="Permalink to this heading">¶</a></h2>
 <p><strong>Detecting Structural Drift</strong></p>
 <p>The two previous <strong>SPARQL</strong> queries can detect that some <strong>mismatch</strong> between asset model and program state exists. How to detect <strong>where</strong> the mismatch is and how to <strong>repair</strong> it?</p>
@@ -439,8 +438,8 @@ The result of the <strong>semantical lifting</strong> of this program is the fol
 <li><p>Monitor connections using previous query</p></li>
 <li><p>(And v.v. to detect twins that must be removed)</p></li>
 </ul>
-</div>
-<div class="section" id="example-adding-a-new-room">
+</section>
+<section id="example-adding-a-new-room">
 <h2>Example: Adding a New Room<a class="headerlink" href="#example-adding-a-new-room" title="Permalink to this heading">¶</a></h2>
 <ul class="simple">
 <li><p>Get all (asset) rooms and their neighboring walls</p></li>
@@ -459,8 +458,8 @@ List&lt;RoomAsrt&gt; newRooms =
         FILTER NOT EXISTS {?y a prog:Room; prog:Room_id ?room.} }&quot;);
 </pre></div>
 </div>
-</div>
-<div class="section" id="demo-repair">
+</section>
+<section id="demo-repair">
 <h2>Demo - Repair<a class="headerlink" href="#demo-repair" title="Permalink to this heading">¶</a></h2>
 <p><strong>Assumptions</strong></p>
 <ul class="simple">
@@ -469,8 +468,8 @@ List&lt;RoomAsrt&gt; newRooms =
 <li><p>Changes <strong>do not happen faster</strong> than we can repair</p></li>
 </ul>
 <p>Monitoring is still needed to (a) <strong>ensure</strong> that repairs work correctly, and (b) <strong>detect loss</strong> of twinning due to, e.g., unexpected structural drift.</p>
-</div>
-<div class="section" id="summary">
+</section>
+<section id="summary">
 <h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">¶</a></h2>
 <p><strong>Digital Twins and the FMI</strong></p>
 <p>Digital twins are computer simulations of a physical system. They are used to monitor and control the physical system. Its functioning is based on an interconnection between physical assets and digital models.</p>
@@ -505,8 +504,8 @@ List&lt;RoomAsrt&gt; newRooms =
 <li><p>Semantically lifted programs</p></li>
 <li><p>Asset models</p></li>
 </ul>
-</div>
-<div class="section" id="current-research-questions">
+</section>
+<section id="current-research-questions">
 <h2>Current Research Questions<a class="headerlink" href="#current-research-questions" title="Permalink to this heading">¶</a></h2>
 <p><strong>Digital Twins and Formal Methods</strong></p>
 <ul class="simple">
@@ -522,8 +521,8 @@ List&lt;RoomAsrt&gt; newRooms =
 <li><p><a class="reference external" href="mailto:rudi&#37;&#52;&#48;ifi&#46;uio&#46;no">rudi<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
 <li><p><a class="reference external" href="mailto:eduard&#37;&#52;&#48;ifi&#46;uio&#46;no">eduard<span>&#64;</span>ifi<span>&#46;</span>uio<span>&#46;</span>no</a></p></li>
 </ul>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -592,7 +591,7 @@ List&lt;RoomAsrt&gt; newRooms =
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>

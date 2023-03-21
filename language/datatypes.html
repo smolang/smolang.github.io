@@ -4,16 +4,15 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
     <title>Datatypes &#8212; The SMOL Language  documentation</title>
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" type="text/css" href="../_static/basic_mod.css?v=0.7.0-1" />
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
-    <script src="https://unpkg.com/mermaid@9.4.0/dist/mermaid.min.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
     <script>mermaid.initialize({startOnLoad:true});</script>
     <script src="../_static/js/theme.js"></script>
     <script src="../_static/js/petite-vue.js"></script>
@@ -159,70 +158,70 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="datatypes">
+  <section id="datatypes">
 <h1>Datatypes<a class="headerlink" href="#datatypes" title="Permalink to this heading">¶</a></h1>
 <p>This chapter describes the datatypes of SMOL.</p>
-<div class="section" id="booleans">
+<section id="booleans">
 <h2>Booleans<a class="headerlink" href="#booleans" title="Permalink to this heading">¶</a></h2>
 <p>The name for the Boolean (true or false) datatype is <code class="docutils literal notranslate"><span class="pre">Boolean</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Boolean</span> <span class="n">falsity</span> <span class="o">=</span> <span class="n">True</span><span class="o">;</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Boolean</span><span class="w"> </span><span class="n">falsity</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">True</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="integers">
+</section>
+<section id="integers">
 <h2>Integers<a class="headerlink" href="#integers" title="Permalink to this heading">¶</a></h2>
 <p>The name for the integer datatype is <code class="docutils literal notranslate"><span class="pre">Int</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Int</span> <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Int</span><span class="w"> </span><span class="n">counter</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="floating-point-numbers">
+</section>
+<section id="floating-point-numbers">
 <h2>Floating Point Numbers<a class="headerlink" href="#floating-point-numbers" title="Permalink to this heading">¶</a></h2>
 <p>The name for the floating-point datatype is <code class="docutils literal notranslate"><span class="pre">Double</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Double</span> <span class="n">approximately_pi</span> <span class="o">=</span> <span class="mf">3.1415927</span><span class="o">;</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">Double</span><span class="w"> </span><span class="n">approximately_pi</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3.1415927</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="strings">
+</section>
+<section id="strings">
 <h2>Strings<a class="headerlink" href="#strings" title="Permalink to this heading">¶</a></h2>
 <p>The name for the string datatype is <code class="docutils literal notranslate"><span class="pre">String</span></code>.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span> <span class="n">language_name</span> <span class="o">=</span> <span class="s">&quot;SMOL&quot;</span><span class="o">;</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">String</span><span class="w"> </span><span class="n">language_name</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">&quot;SMOL&quot;</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="objects">
+</section>
+<section id="objects">
 <h2>Objects<a class="headerlink" href="#objects" title="Permalink to this heading">¶</a></h2>
 <p>Classes are datatypes, objects of that class have the type defined by the class.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">Person</span> <span class="o">(</span><span class="n">String</span> <span class="n">name</span><span class="o">,</span> <span class="n">Int</span> <span class="n">age</span><span class="o">)</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="kd">class</span> <span class="nf">Person</span><span class="w"> </span><span class="p">(</span><span class="n">String</span><span class="w"> </span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">age</span><span class="p">)</span>
 <span class="n">end</span>
 
 <span class="n">main</span>
-  <span class="n">Person</span> <span class="n">p</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Person</span><span class="o">(</span><span class="s">&quot;SMOL&quot;</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+<span class="w">  </span><span class="n">Person</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">Person</span><span class="p">(</span><span class="s">&quot;SMOL&quot;</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="p">);</span>
 <span class="n">end</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="fmus">
+</section>
+<section id="fmus">
 <h2>FMUs<a class="headerlink" href="#fmus" title="Permalink to this heading">¶</a></h2>
 <p>FMUs, instantiated via the <code class="docutils literal notranslate"><span class="pre">simulate</span></code> expression, have a type <code class="docutils literal notranslate"><span class="pre">FMO[...]</span></code>,
 with the square brackets listing the <code class="docutils literal notranslate"><span class="pre">modelDescription.xml</span></code> file as
 contained in the FMU.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span> <span class="n">Int</span> <span class="n">j</span><span class="o">,</span> <span class="n">out</span> <span class="n">Int</span> <span class="n">i</span><span class="o">]</span> <span class="n">cont</span> <span class="o">=</span> <span class="n">simulate</span><span class="o">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="o">,</span> <span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="o">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="o">);</span>
-<span class="n">cont</span><span class="o">.</span><span class="na">j</span> <span class="o">=</span> <span class="mi">5</span><span class="o">;</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">FMO</span><span class="o">[</span><span class="n">in</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">j</span><span class="p">,</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">Int</span><span class="w"> </span><span class="n">i</span><span class="o">]</span><span class="w"> </span><span class="n">cont</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">simulate</span><span class="p">(</span><span class="s">&quot;path/to/fmu&quot;</span><span class="p">,</span><span class="w"> </span><span class="n">j</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+<span class="n">cont</span><span class="p">.</span><span class="na">j</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">5</span><span class="p">;</span>
 </pre></div>
 </div>
-</div>
-<div class="section" id="lists">
+</section>
+<section id="lists">
 <h2>Lists<a class="headerlink" href="#lists" title="Permalink to this heading">¶</a></h2>
 <p>The <code class="docutils literal notranslate"><span class="pre">List&lt;C&gt;</span></code> datatype holds a list of values of type <code class="docutils literal notranslate"><span class="pre">C</span></code>, where <code class="docutils literal notranslate"><span class="pre">C</span></code> can
 be any SMOL datatype.  Currently lists are implemented as objects and are
 built incrementally.</p>
-<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span> <span class="n">l1</span> <span class="o">=</span> <span class="k">new</span> <span class="n">List</span><span class="o">(</span><span class="mi">5</span><span class="o">,</span> <span class="kc">null</span><span class="o">);</span>
-<span class="n">List</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span> <span class="n">l2</span> <span class="o">=</span> <span class="k">new</span> <span class="n">List</span><span class="o">(</span><span class="mi">3</span><span class="o">,</span> <span class="n">l1</span><span class="o">);</span>
+<div class="highlight-Java notranslate"><div class="highlight"><pre><span></span><span class="n">List</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">l1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="w"> </span><span class="kc">null</span><span class="p">);</span>
+<span class="n">List</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span><span class="w"> </span><span class="n">l2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">new</span><span class="w"> </span><span class="n">List</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="w"> </span><span class="n">l1</span><span class="p">);</span>
 </pre></div>
 </div>
-</div>
-</div>
+</section>
+</section>
 
 
             <div class="clearer"></div>
@@ -276,7 +275,7 @@ built incrementally.</p>
 
     <div class="footer" role="contentinfo">
         &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
-      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 5.0.2.
+      Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
 <p id="theme_credit">Styled using the <a href="https://github.com/piccolo-orm/piccolo_theme">Piccolo Theme</a></p>
