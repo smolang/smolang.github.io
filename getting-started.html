@@ -168,6 +168,21 @@ code can be checked out via:</p>
 <div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">java</span><span class="w"> </span><span class="o">-</span><span class="n">jar</span><span class="w"> </span><span class="n">build</span><span class="o">/</span><span class="n">libs</span><span class="o">/</span><span class="n">smol</span><span class="p">.</span><span class="na">jar</span>
 </pre></div>
 </div>
+<section id="editor-support">
+<h3>Editor Support<a class="headerlink" href="#editor-support" title="Permalink to this heading">¶</a></h3>
+<p>There is basic support for SMOL for the following editors:</p>
+<ul>
+<li><p><a class="reference external" href="https://github.com/atom/atom">Atom</a></p>
+<p>Supports syntax highlighting. Source, installation instructions at <a class="reference external" href="https://github.com/smolang/SemanticObjects/tree/master/editor-support/atom">https://github.com/smolang/SemanticObjects/tree/master/editor-support/atom</a></p>
+</li>
+<li><p><a class="reference external" href="https://www.gnu.org/software/emacs/">Emacs</a></p>
+<p>Adds support for syntax highlighting and for running a SMOL REPL inside Emacs. Source, installation instructions at <a class="reference external" href="https://github.com/smolang/SemanticObjects/tree/master/editor-support/emacs">https://github.com/smolang/SemanticObjects/tree/master/editor-support/emacs</a></p>
+</li>
+<li><p><a class="reference external" href="https://code.visualstudio.com">Visual Studio Code</a></p>
+<p>Supports syntax highlighting. Source, installation instructions at <a class="reference external" href="https://github.com/smolang/smol-vs-code">https://github.com/smolang/smol-vs-code</a>. Latest release at <a class="reference external" href="https://github.com/smolang/smol-vs-code/releases/latest">https://github.com/smolang/smol-vs-code/releases/latest</a>.</p>
+</li>
+</ul>
+</section>
 </section>
 <section id="running-a-simple-smol-program">
 <h2>Running a Simple SMOL Program<a class="headerlink" href="#running-a-simple-smol-program" title="Permalink to this heading">¶</a></h2>
@@ -224,21 +239,24 @@ and in the program.</p>
 </section>
 <section id="smol-command-line-parameters">
 <h2>SMOL Command-Line Parameters<a class="headerlink" href="#smol-command-line-parameters" title="Permalink to this heading">¶</a></h2>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="nl">Options</span><span class="p">:</span>
-<span class="w">  </span><span class="o">-</span><span class="n">e</span><span class="p">,</span><span class="w"> </span><span class="o">-</span><span class="n">l</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">execute</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">load</span>
-<span class="w">  </span><span class="o">-</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">back</span><span class="w"> </span><span class="n">PATH</span><span class="w">            </span><span class="n">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">containing</span><span class="w"> </span><span class="n">OWL</span><span class="w"> </span><span class="kd">class</span>
-                             <span class="nc">definitions</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">background</span><span class="w"> </span><span class="n">knowledge</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">domain</span><span class="w"> </span><span class="n">TEXT</span><span class="w">          </span><span class="n">prefix</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">domain</span><span class="p">:.</span><span class="w"> </span><span class="p">(</span><span class="k">default</span>
-<span class="w">                             </span><span class="n">https</span><span class="p">:</span><span class="c1">//github.com/Edkamb/SemanticObjects/ontologies/default#)</span>
-<span class="w">  </span><span class="o">-</span><span class="n">i</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">input</span><span class="w"> </span><span class="n">PATH</span><span class="w">           </span><span class="n">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="p">.</span><span class="na">smol</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">which</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">loaded</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">startup</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">r</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">replay</span><span class="w"> </span><span class="n">PATH</span><span class="w">          </span><span class="n">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">containing</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">series</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">shell</span>
-<span class="w">                             </span><span class="n">commands</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">o</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">outdir</span><span class="w"> </span><span class="n">PATH</span><span class="w">          </span><span class="n">path</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">directory</span><span class="w"> </span><span class="n">used</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">create</span><span class="w"> </span><span class="n">data</span>
-<span class="w">                             </span><span class="n">files</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">v</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">verbose</span><span class="w">              </span><span class="n">Verbose</span><span class="w"> </span><span class="n">output</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">m</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">materialize</span><span class="w">          </span><span class="n">Materialize</span><span class="w"> </span><span class="n">triples</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">dump</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">file</span><span class="p">.</span>
-<span class="w">  </span><span class="o">-</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">prefixes</span><span class="w"> </span><span class="n">VALUE</span><span class="w">       </span><span class="n">Extra</span><span class="w"> </span><span class="n">prefixes</span><span class="p">,</span><span class="w"> </span><span class="n">given</span><span class="w"> </span><span class="n">as</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">list</span><span class="w"> </span><span class="n">PREFIX</span><span class="o">=</span><span class="n">URI</span>
-<span class="w">  </span><span class="o">-</span><span class="n">h</span><span class="p">,</span><span class="w"> </span><span class="o">--</span><span class="n">help</span><span class="w">                 </span><span class="n">Show</span><span class="w"> </span><span class="k">this</span><span class="w"> </span><span class="n">message</span><span class="w"> </span><span class="n">and</span><span class="w"> </span><span class="n">exit</span>
+<div class="highlight-java notranslate"><div class="highlight"><pre><span></span>Options:
+  -e, -l, --execute, --load
+  -j, --jenaReasoner TEXT    Set value of the internally used reasoner to
+                             &#39;off&#39;, &#39;rdfs&#39;, or &#39;owl&#39; (default -&gt; &#39;owl&#39;)
+  -s, --sparqlEndpoint TEXT  url for SPARQL endpoint
+  -b, --back PATH            path to a file containing OWL class definitions
+                             as background knowledge.
+  -d, --domain TEXT          prefix for domain:.
+  -i, --input PATH           path to a .smol file which is loaded on startup.
+  -r, --replay PATH          path to a file containing a series of REPL
+                             commands.
+  -o, --outdir PATH          path to a directory used to create data files.
+  -v, --verbose              Verbose output.
+  -m, --materialize          Materialize triples and dump to file.
+  -q, --useQueryType         Activates the type checker for access
+  -p, --prefixes VALUE       Extra prefixes, given as a list -p PREFIX1=URI1
+                             -p PREFIX2=URI2
+  -h, --help                 Show this message and exit
 </pre></div>
 </div>
 </section>
@@ -418,7 +436,10 @@ performance measuring.</p></td>
             <div class="page_toc">
                 <ul>
 <li><a class="reference internal" href="#">Getting Started</a><ul>
-<li><a class="reference internal" href="#installation">Installation</a></li>
+<li><a class="reference internal" href="#installation">Installation</a><ul>
+<li><a class="reference internal" href="#editor-support">Editor Support</a></li>
+</ul>
+</li>
 <li><a class="reference internal" href="#running-a-simple-smol-program">Running a Simple SMOL Program</a></li>
 <li><a class="reference internal" href="#smol-command-line-parameters">SMOL Command-Line Parameters</a></li>
 <li><a class="reference internal" href="#the-smol-interactive-repl">The SMOL interactive REPL</a><ul>
@@ -457,7 +478,7 @@ performance measuring.</p></td>
 
 
     <div class="footer" role="contentinfo">
-        &#169; Copyright 2022, Eduard Kamburjan, Rudolf Schlatte.
+        &#169; Copyright 2022-2024, Eduard Kamburjan, Rudolf Schlatte.
       Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 6.1.3.
     </div>
 
